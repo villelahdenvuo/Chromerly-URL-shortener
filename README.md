@@ -13,3 +13,4 @@ Planned Features
 * Context menu integration
 * Suggest your ideas and/or fork the project!
 * Better icons perhaps. ':)
+* Internalization (a.k.a. translations)
