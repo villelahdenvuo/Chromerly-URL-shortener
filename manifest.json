@@ -1,11 +1,25 @@
 {
-  "name": "Chromerly URL-lyhennin",
-  "version": "1.1",
-  "minimum_chrome_version": "5.0.316.0",
-  "description": "Laajennus, joka hyödyntää suomalaisen urly.fi:n tuoretta rajapintaa. Tämä on ensimmäinen laajennukseni. :) Protip: Kirjoita omni-lootaan url niin voit lyhentää osoitteen suoraa omni-lootasta!",
-  "icons": {"16": "16.png", "48": "48.png", "128": "128.png"},
-  "background_page": "background.html",
-  "omnibox": {"keyword": "url"},
-  "page_action": {"default_icon": "16.png", "default_title": "Lyhennä osoite!"},
-  "permissions": ["http://*/", "tabs", "notifications"]
+    "name": "__MSG_ExtensionName__",
+    "description": "__MSG_ExtensionDesc__",
+    "version": "1.2",
+    "minimum_chrome_version": "5.0.316.0",
+    "icons": {
+        "16": "16.png",
+        "48": "48.png",
+        "128": "128.png"
+    },
+    "background_page": "background.html",
+    "omnibox": {
+        "keyword": "url"
+    },
+    "page_action": {
+        "default_icon": "16.png",
+        "default_title": "__MSG_UrlyShorten__"
+    },
+    "permissions": [
+        "http://*/",
+        "tabs",
+        "notifications"
+    ],
+    "default_locale": "fi"
 }

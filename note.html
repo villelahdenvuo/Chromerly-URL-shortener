@@ -1,21 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+<base target="_blank" />
 <style>
-input {width:135px;font-size: 20px;}
-body {height:135px;text-align:center;font-family: sans-serif;overflow:hidden;}
+body {
+height:120px;
+font-family:sans-serif;
+overflow:hidden;
+margin: 2px;
+}
+div {
+display:-webkit-box;
+-webkit-box-orient:vertical;
+-webkit-box-pack:center;
+height:120px;
+}
 img {float:left;}
 span {font-size:21px;}
+a {font-size: 24px;}
 </style>
 </head>
 <body>
-<img id="img" src="qr.png" alt="QR-Code" width="135" height="135" title="Kuvaa minut älypuhelimellasi!" /><input type="text" id="url"/><span>Osoite kopioitu leikepöydälle!</span>
+<!-- Our data elements -->
+<img id="img" src="qr.png" alt="QR-Code" width="120" height="120"/>
+<div><a href="#" id="url">...</a>
+<span id="text">Osoite kopioitu leikepÃ¶ydÃ¤lle!</span></div>
+<!-- And some script to bring them alive -->
 <script>
-var h = window.location.hash.substring(1),
-    i = document.getElementById("url"),
-    m = document.getElementById("img");
-i.value = h;
-m.src = 'https://chart.googleapis.com/chart?chs=135x135&cht=qr&chl=' + escape(h);
+var h = window.location.hash.substring(1), // Get the shortened url
+    i = document.getElementById("url"),    // Handle to the input box
+    t = document.getElementById("text");   // Notification text
+    m = document.getElementById("img");    // QR-Code image
+// Link
+i.href = i.innerText = h;
+// Notification text
+t.innerText = chrome.i18n.getMessage('NoticeCopied');
+// QR-Code image
+m.title = chrome.i18n.getMessage('NoticeQRScan');
+m.src = 'https://chart.googleapis.com/chart?chs=120x120&cht=qr&chld=Q|0&chl=' + escape(h);
 </script>
 </body>
 </html>

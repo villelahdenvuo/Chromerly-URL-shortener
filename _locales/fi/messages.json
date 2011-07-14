@@ -1,0 +1,15 @@
+{
+"ExtensionName": {"message": "Chromerly URL-lyhentäjä"},
+"ExtensionDesc": {"message": "Chromerly on yksinkertainen url-lyhentäjä. Klikkaa vain kuvaketta lyhentääksesi nykyisen osoitteen tai käytä url avainsanaa omni-lootassa lyhentääksesi mitä tahansa. Tämä on ensimmäinen laajennokseni. :)"},
+
+   "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Lyhennä osoite!"},
+"UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Prosessoidaan..."},
+    "UrlyFailed": {"description": "Icon's tooltip: failed",     "message": "Epäonnistui!"},
+
+"FailGeneral": {"description": "Notification text: fail",          "message": "Lyhentäminen epäonnistui. Olen kamalan pahoillani, yritä uudestaan myöhemmin!"},
+  "FailLimit": {"description": "Notification text: limit reached", "message": "Lyhentäminen epäonnistui, olet täyttänyt kiintiösi!"},
+ "FailFormat": {"description": "Notification text: bad format",    "message": "Lyhentäminen epäonnistui, tarkastuta näppäimistösi! :P"},
+
+"NoticeCopied": {"description": "Notification text: copied",   "message": "Osoite kopioitu leikepöydälle!"},
+"NoticeQRScan": {"description": "Notification text: QR title", "message": "Skannaa minut älypuhelimellasi!"}
+}

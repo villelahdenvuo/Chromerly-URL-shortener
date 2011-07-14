@@ -2,90 +2,92 @@
 <html>
 <head></head>
 <body>
+<!-- Our input box for copying to clipboard -->
 <input type="text" id="url"/>
+<!-- The magic to make it all happen -->
 <script>
+  // INIT - Show the icon
+  chrome.tabs.onUpdated.addListener(function(tabId) {
+    chrome.pageAction.show(tabId);
+  });
+
+  ///////////////////////// INTERACTION WITH THE BROWSER /////////////////////////
+
   // ICON clicked
   chrome.pageAction.onClicked.addListener(function(tab) {
     // We're processing...
-    setTab('loading.png', 'Processing...', tab);
+    setTab('loading.png', 'UrlyProcessing', tab);
     shortenURL(tab.url, function (e, s) {
       if (!e) { // No error!
-        setTab('16.png', 'Lyhennä osoite!', tab);
-        copyToClipboard(s);
+        setTab('16.png', 'UrlyShorten', tab);
+        copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
         var notification = webkitNotifications.createHTMLNotification('note.html#' + s);
         notification.show();
-      } else { // Error :/
-        setTab('stop.png', 'Failed!', tab);
-        var notification = webkitNotifications.createNotification(
-            'stop.png',
-            'Failed!',
-            "I'm terribly sorry, try again later!"
+      } else { // Failed :/
+        setTab('stop.png', 'UrlyFailed', tab);
+        var notification = webkitNotifications.createNotification('stop.png',
+            chrome.i18n.getMessage('UrlyFailed'),
+            chrome.i18n.getMessage(s)
         );
         notification.show();
         // Hide error message and reset icon after a while
         setTimeout(function () {
           notification.cancel();
-          setTab('16.png', 'Lyhennä osoite!', tab);
+          setTab('16.png', 'UrlyShorten', tab);
         }, 10000);
       }
     });
   });
-  // Show the icon
-  chrome.tabs.onUpdated.addListener(function(tabId) {
-    chrome.pageAction.show(tabId);
-  });
 
-  // SHORTEN url and callback
-  function shortenURL(url, cb) {
-    var xhr = new XMLHttpRequest(),
-        urly = 'http://urly.fi/api/shorten/?url=' + escape(url);
-    xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4) {
-      if (xhr.status == 200) {
-        cb(false, 'http://urly.fi/' + xhr.responseText);
-      } else {
-        cb(true, 'Error!');
-      }
-    }
-    }
-    xhr.open('GET', urly, true);
-    xhr.send();
-  }
-
-  function copyToClipboard(text) {
-    var input = document.getElementById('url');
-    
-    if(input == undefined)
-        return;
-    
-    input.value = text;                 
-    input.select();
-
-    document.execCommand('copy', false, null);
-  }
-  
   // OMNIBOX keyword: url
   chrome.omnibox.onInputEntered.addListener(function(text) {
     shortenURL(text, function (e, s) {
-      if (!e) {
-        copyToClipboard(s);
+      if (!e) { // No error!
+        copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
         var notification = webkitNotifications.createHTMLNotification('note.html#' + s);
         notification.show();
-      } else {
-        var notification = webkitNotifications.createNotification(
-            'stop.png',
-            'Failed!',
-            "I'm terribly sorry, try again later!"
+      } else { // Failed :/
+        var notification = webkitNotifications.createNotification('stop.png',
+            chrome.i18n.getMessage('UrlyFailed'),
+            chrome.i18n.getMessage(s)
         );
-        notification.show();
+        notification.show(); // Show notification and hide it after 10 seconds
         setTimeout(function () {notification.cancel();}, 10000);
       }
     });
   });
 
+  ///////////////////////// UTILITY AND HELPERS /////////////////////////
+
+  // SHORTEN url and call callback(errors?, shortened/error text)
+  function shortenURL(url, cb) {
+    var xhr = new XMLHttpRequest(),
+        urly = 'http://urly.fi/api/shorten/?url=' + escape(url);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {       cb(false, 'http://urly.fi/' + xhr.responseText);
+        } else if (xhr.status === 403){ cb(true, 'FailFormat');
+        } else if (xhr.status === 409){ cb(true, 'FailLimit');
+        } else {                        cb(true, 'FailGeneral');}
+      }
+    }
+    xhr.open('GET', urly, true);
+    xhr.send();
+  }
+
+  // COPY text to clipboard
+  function copyToClipboard(text) {
+    var input = document.getElementById('url');
+    if(!input) {return;}
+    input.value = text;
+    input.select();
+    document.execCommand('copy', false, null);
+  }
+
+  // SET Icon and Tooltip to the omnibox
   function setTab(i, t, tab) {
     chrome.pageAction.setIcon({path: i, tabId: tab.id});
-    chrome.pageAction.setTitle({title: t, tabId: tab.id});
+    chrome.pageAction.setTitle({title: chrome.i18n.getMessage(t), tabId: tab.id});
   };
 </script>
 </body>
