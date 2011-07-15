@@ -1,6 +1,6 @@
 Chromerly URL-shortener
 =======================
-Chromerly is a Chrome Extension to utilize the Finnish [urly.fi](http://urly.fi/). The license of this extension is [GPL version 3](https://github.com/tuhoojabotti/Chromerly-URL-shortener/blob/master/COPYING).
+Chromerly is a Chrome extension to utilize the Finnish [urly.fi](http://urly.fi/). The license of this extension is [GPL version 3](https://github.com/tuhoojabotti/Chromerly-URL-shortener/blob/master/COPYING).
 
 Features
 --------
@@ -18,8 +18,8 @@ Planned Features
 Contributors
 -----------
 * tuhoojabotti (Ville Lahdenvuo) - Main developer
-* Pettis - [urly.fi and it's api](http://urly.fi/)
-* Wing - Help with icons
+* Pettis - [Urly](http://urly.fi/ "In Finnish") and it's api
+* Wing (Elias Linjama) - Processing and failure icons
 
 ### Translations
 * tuhoojabotti (Ville Lahdenvuo) - English & Finnish
