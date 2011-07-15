@@ -12,4 +12,11 @@
 
 "NoticeCopied": {"description": "Notification text: copied",   "message": "Osoite kopioitu leikepöydälle!"},
 "NoticeQRScan": {"description": "Notification text: QR title", "message": "Skannaa minut älypuhelimellasi!"}
+
+     "ContextPage": {"description": "Context text: page",        "message": "Lyhennä sivun osoite"},
+"ContextSelection": {"description": "Context text: selection",   "message": "Lyhennä valittu tekstiosoite"},
+     "ContextLink": {"description": "Context text: link",        "message": "Lyhennä valittu linkki"},
+    "ContextImage": {"description": "Context text: image",       "message": "Lyhennä kuvan osoite"},
+    "ContextVideo": {"description": "Context text: html5 video", "message": "Lyhennä videon osoite"},
+    "ContextAudio": {"description": "Context text: html5 audio", "message": "Lyhennä äänen osoite"}
 }

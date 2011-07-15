@@ -23,7 +23,29 @@
 <input type="text" id="url"/>
 <!-- The magic to make it all happen -->
 <script>
-  // INIT - Show the icon
+  // INIT - Create context menus
+  window.onload = function () {
+    chrome.contextMenus.create({ //// PAGE
+        "title": chrome.i18n.getMessage('ContextPage'),
+        "contexts": ["page"], "onclick": handleContext});
+    chrome.contextMenus.create({ //// SELECTION
+        "title": chrome.i18n.getMessage('ContextSelection'),
+        "contexts": ["selection"], "onclick": handleContext});
+    chrome.contextMenus.create({ //// LINK
+        "title": chrome.i18n.getMessage('ContextLink'),
+        "contexts": ["link"], "onclick": handleContext});
+    chrome.contextMenus.create({ //// IMAGE
+        "title": chrome.i18n.getMessage('ContextImage'),
+        "contexts": ["image"], "onclick": handleContext});
+    chrome.contextMenus.create({ //// VIDEO
+        "title": chrome.i18n.getMessage('ContextVideo'),
+        "contexts": ["video"], "onclick": handleContext});
+    chrome.contextMenus.create({ //// AUDIO
+        "title": chrome.i18n.getMessage('ContextAudio'),
+        "contexts": ["audio"], "onclick": handleContext});
+  }
+
+  // UPDATE - Show icon on tabs
   chrome.tabs.onUpdated.addListener(function(tabId) {
     chrome.pageAction.show(tabId);
   });
@@ -33,16 +55,16 @@
   // ICON clicked
   chrome.pageAction.onClicked.addListener(function(tab) {
     // We're processing...
-    setTab('loading.png', 'UrlyProcessing', tab);
+    setTab('loading', 'UrlyProcessing', tab);
     shortenURL(tab.url, function (e, s) {
       if (!e) { // No error!
-        setTab('16.png', 'UrlyShorten', tab);
+        setTab('16', 'UrlyShorten', tab);
         copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
         var notification = webkitNotifications.createHTMLNotification('note.html#' + s);
         notification.show();
       } else { // Failed :/
-        setTab('stop.png', 'UrlyFailed', tab);
-        var notification = webkitNotifications.createNotification('stop.png',
+        setTab('stop', 'UrlyFailed', tab);
+        var notification = webkitNotifications.createNotification('graphics/stop.png',
             chrome.i18n.getMessage('UrlyFailed'),
             chrome.i18n.getMessage(s)
         );
@@ -50,11 +72,41 @@
         // Hide error message and reset icon after a while
         setTimeout(function () {
           notification.cancel();
-          setTab('16.png', 'UrlyShorten', tab);
+          setTab('16', 'UrlyShorten', tab);
         }, 10000);
       }
     });
   });
+
+  // CONTEXT menu clicked
+  function handleContext(i, tab) {
+    var url = "";
+    if(i.mediaType) {             url = i.srcUrl;         // Clicked Image, Video or Audio
+    } else if (i.linkUrl) {       url = i.linkUrl;        // Clicked Link
+    } else if (i.selectionText) { url = i.selectionText;  // Clicked Selection
+    } else if (i.pageUrl) {       url = i.pageUrl;}       // Clicked Page
+    setTab('loading', 'UrlyProcessing', tab);
+    shortenURL(url, function (e, s) {
+      if (!e) { // No error!
+        setTab('16', 'UrlyShorten', tab);
+        copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
+        var notification = webkitNotifications.createHTMLNotification('note.html#' + s);
+        notification.show();
+      } else { // Failed :/
+        setTab('stop', 'UrlyFailed', tab);
+        var notification = webkitNotifications.createNotification('graphics/stop.png',
+            chrome.i18n.getMessage('UrlyFailed'),
+            chrome.i18n.getMessage(s)
+        );
+        notification.show();
+        // Hide error message and reset icon after a while
+        setTimeout(function () {
+          notification.cancel();
+          setTab('16', 'UrlyShorten', tab);
+        }, 10000);
+      }
+    });    
+  }
 
   // OMNIBOX keyword: url
   chrome.omnibox.onInputEntered.addListener(function(text) {
@@ -64,7 +116,7 @@
         var notification = webkitNotifications.createHTMLNotification('note.html#' + s);
         notification.show();
       } else { // Failed :/
-        var notification = webkitNotifications.createNotification('stop.png',
+        var notification = webkitNotifications.createNotification('graphics/stop.png',
             chrome.i18n.getMessage('UrlyFailed'),
             chrome.i18n.getMessage(s)
         );
@@ -78,6 +130,15 @@
 
   // SHORTEN url and call callback(errors?, shortened/error text)
   function shortenURL(url, cb) {
+    // Check if url seems rational (Thanks to Daring Fireball for the regex and searls (Justin Searls) for making it work in JS)
+    url = url.match(/\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/i);
+    if (!url) { // url is null
+      cb(true, 'FailFormat');
+      return;
+    } else {
+      url = url[0];
+    }
+    // Now for the shortening!
     var xhr = new XMLHttpRequest(),
         urly = 'http://urly.fi/api/shorten/?url=' + escape(url);
     xhr.onreadystatechange = function() {
@@ -103,7 +164,7 @@
 
   // SET Icon and Tooltip to the omnibox
   function setTab(i, t, tab) {
-    chrome.pageAction.setIcon({path: i, tabId: tab.id});
+    chrome.pageAction.setIcon({path: 'graphics/' + i + '.png', tabId: tab.id});
     chrome.pageAction.setTitle({title: chrome.i18n.getMessage(t), tabId: tab.id});
   };
 </script>

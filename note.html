@@ -16,14 +16,14 @@ display:-webkit-box;
 height:120px;
 }
 img {float:left;}
-span {font-size:21px;}
-a {font-size: 24px;}
+span {font-size:23px;}
+a {font-size: 30px;}
 </style>
 </head>
 <body>
 <!-- Our data elements -->
-<img id="img" src="qr.png" alt="QR-Code" width="120" height="120"/>
-<div><a href="#" id="url">...</a>
+<img id="img" src="graphics/qr.png" alt="QR-Code" width="120" height="120"/>
+<div><a href="#" id="url">...</a><br />
 <span id="text">Osoite kopioitu leikepöydälle!</span></div>
 <!-- And some script to bring them alive -->
 <script>
@@ -32,12 +32,13 @@ var h = window.location.hash.substring(1), // Get the shortened url
     t = document.getElementById("text");   // Notification text
     m = document.getElementById("img");    // QR-Code image
 // Link
-i.href = i.innerText = h;
+i.href = h;
+i.innerText = h.substring(7);
 // Notification text
 t.innerText = chrome.i18n.getMessage('NoticeCopied');
 // QR-Code image
 m.title = chrome.i18n.getMessage('NoticeQRScan');
-m.src = 'https://chart.googleapis.com/chart?chs=120x120&cht=qr&chld=Q|0&chl=' + escape(h);
+m.src = 'http://chart.googleapis.com/chart?chs=120x120&cht=qr&chld=Q|0&chl=' + escape(h);
 </script>
 </body>
 </html>

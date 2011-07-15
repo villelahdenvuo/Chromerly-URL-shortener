@@ -11,5 +11,12 @@
  "FailFormat": {"description": "Notification text: bad format",    "message": "Failed to shorten, check your input!"},
 
 "NoticeCopied": {"description": "Notification text: copied",   "message": "Address copied to clipboard!"},
-"NoticeQRScan": {"description": "Notification text: QR title", "message": "Scan me with your smartphone!"}
+"NoticeQRScan": {"description": "Notification text: QR title", "message": "Scan me with your smartphone!"},
+
+     "ContextPage": {"description": "Context text: page",        "message": "Shorten page url"},
+"ContextSelection": {"description": "Context text: selection",   "message": "Shorten selected text link"},
+     "ContextLink": {"description": "Context text: link",        "message": "Shorten selected link"},
+    "ContextImage": {"description": "Context text: image",       "message": "Shorten selected image url"},
+    "ContextVideo": {"description": "Context text: html5 video", "message": "Shorten selected video url"},
+    "ContextAudio": {"description": "Context text: html5 audio", "message": "Shorten selected audio url"}
 }
