@@ -14,3 +14,14 @@ Planned Features
 * Context menu integration
 * Better icons perhaps. ':)
 * Suggest your ideas and/or fork the project!
+
+Contributos
+-----------
+* tuhoojabotti (Ville Lahdenvuo) - Main developer
+* Pettis - (urly.fi and it's api)[http://urly.fi/]
+* Wing - Help with icons
+
+### Translations
+* tuhoojabotti (Ville Lahdenvuo) - English & Finnish
+* Hidden (Denes) - Hungarian
+* Mowmow (Moritz Köhler) - German
