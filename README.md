@@ -7,7 +7,7 @@ Features
 * Simple icon to click on every site to shorten it's url
 * Omnibox integration - just type url to use it and then enter your url to shorten
 * Sleek notification with QR-code for us smartphone owners
-* Translated to English and Finnish
+* Translated to English, Hungarian and Finnish
 
 Planned Features
 ----------------
