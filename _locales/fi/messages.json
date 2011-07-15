@@ -11,7 +11,7 @@
  "FailFormat": {"description": "Notification text: bad format",    "message": "Lyhentäminen epäonnistui, tarkastuta näppäimistösi! :P"},
 
 "NoticeCopied": {"description": "Notification text: copied",   "message": "Osoite kopioitu leikepöydälle!"},
-"NoticeQRScan": {"description": "Notification text: QR title", "message": "Skannaa minut älypuhelimellasi!"}
+"NoticeQRScan": {"description": "Notification text: QR title", "message": "Skannaa minut älypuhelimellasi!"},
 
      "ContextPage": {"description": "Context text: page",        "message": "Lyhennä sivun osoite"},
 "ContextSelection": {"description": "Context text: selection",   "message": "Lyhennä valittu tekstiosoite"},

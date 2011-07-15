@@ -11,5 +11,12 @@
  "FailFormat": {"description": "Notification text: bad format",    "message": "A rövidítés nem sikerült, ellenőrizd a bemenetet!"},
 
 "NoticeCopied": {"description": "Notification text: copied",   "message": "Cím a vágólapra másolva!"},
-"NoticeQRScan": {"description": "Notification text: QR title", "message": "Szkennelj be az okos telefonoddal!"}
+"NoticeQRScan": {"description": "Notification text: QR title", "message": "Szkennelj be az okos telefonoddal!"},
+
+     "ContextPage": {"description": "Context text: page",        "message": "Lap urljének rövidítése"},
+"ContextSelection": {"description": "Context text: selection",   "message": "Kiválasztott szöveg linkjének rövidítése"},
+     "ContextLink": {"description": "Context text: link",        "message": "Kiválasztott link rövidítése"},
+    "ContextImage": {"description": "Context text: image",       "message": "Kiválasztott kép linkjének rövidítése"},
+    "ContextVideo": {"description": "Context text: html5 video", "message": "Kiválasztott videó urljének rövidítése"},
+    "ContextAudio": {"description": "Context text: html5 audio", "message": "Kiválasztott audió urljének rövidítése"}
 }

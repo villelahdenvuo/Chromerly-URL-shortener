@@ -11,7 +11,7 @@
  "FailFormat": {"description": "Notification text: bad format",    "message": "Fehler beim Kürzen, überprüfe die Eingabe!"},
 
 "NoticeCopied": {"description": "Notification text: copied",   "message": "Addresse kopiert!"},
-"NoticeQRScan": {"description": "Notification text: QR title", "message": "Scan mich mit deinem Smartphone!"}
+"NoticeQRScan": {"description": "Notification text: QR title", "message": "Scan mich mit deinem Smartphone!"},
 
      "ContextPage": {"description": "Context text: page",        "message": "Kürze URL der Seite"},
 "ContextSelection": {"description": "Context text: selection",   "message": "Kürze ausgewählten Text-Link"},
