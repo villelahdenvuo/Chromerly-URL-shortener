@@ -15,7 +15,7 @@ Planned Features
 * Better icons perhaps. ':)
 * Suggest your ideas and/or fork the project!
 
-Contributos
+Contributors
 -----------
 * tuhoojabotti (Ville Lahdenvuo) - Main developer
 * Pettis - [urly.fi and it's api](http://urly.fi/)
