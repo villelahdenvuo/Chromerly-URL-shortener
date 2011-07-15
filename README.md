@@ -1,6 +1,7 @@
 Chromerly URL-shortener
 =======================
 ![Chromerly Paint-job](http://github.com/tuhoojabotti/Chromerly-URL-shortener/raw/master/graphics/chromerly.png "Hueg thanks to mikeful!1")
+
 Chromerly is a Chrome extension to utilize the Finnish [urly.fi](http://urly.fi/). The license of this extension is [GPL version 3](http://github.com/tuhoojabotti/Chromerly-URL-shortener/blob/master/COPYING).
 
 Features
@@ -17,7 +18,7 @@ Planned Features
 
 Contributors
 -----------
-* tuhoojabotti (Ville Lahdenvuo) - Main developer
+* tuhoojabotti (Ville Lahdenvuo) – Main developer
 * Pettis (Juha Petäjäjärvi) – [Urly](http://urly.fi/ "In Finnish") and it's api
 * mikeful (Mikko Niemikorpi) – Teh awsum README logo!
 * Crystal Project (Everaldo Coelho) – Processing and failure icons
