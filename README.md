@@ -18,7 +18,7 @@ Planned Features
 Contributors
 -----------
 * tuhoojabotti (Ville Lahdenvuo) - Main developer
-* Pettis - [Urly](http://urly.fi/ "In Finnish") and it's api
+* Pettis (Juha Petäjäjärvi) - [Urly](http://urly.fi/ "In Finnish") and it's api
 * Wing (Elias Linjama) - Processing and failure icons
 
 ### Translations
