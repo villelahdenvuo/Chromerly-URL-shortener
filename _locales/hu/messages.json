@@ -1,0 +1,15 @@
+{
+"ExtensionName": {"message": "Chromerly URL-rövidítő"},
+"ExtensionDesc": {"message": "A Chromerly egy egyszerű url-rövidítő bővítmény, csak kattints az ikonra, hogy rövidítsd a jelenlegi url-t vagy használd az urly omnibox kulcsszót, hogy lerövidítsd, amit csak akarsz. Ez az első bővítményem. :)"},
+
+   "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Url rövidítve!"},
+"UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Folyamatban..."},
+    "UrlyFailed": {"description": "Icon's tooltip: failed",     "message": "Hiba!"},
+
+"FailGeneral": {"description": "Notification text: fail",          "message": "A rövidítés nem sikerült. Nagyon sajnálom, próbáld meg következőkor!"},
+  "FailLimit": {"description": "Notification text: limit reached", "message": "A rövidítés nem sikerült, túllépted a megengedett korlátot!"},
+ "FailFormat": {"description": "Notification text: bad format",    "message": "A rövidítés nem sikerült, ellenőrizd a bemenetet!"},
+
+"NoticeCopied": {"description": "Notification text: copied",   "message": "Cím a vágólapra másolva!"},
+"NoticeQRScan": {"description": "Notification text: QR title", "message": "Szkennelj be az okos telefonoddal!"}
+}
