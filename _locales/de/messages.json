@@ -1,0 +1,15 @@
+{
+"ExtensionName": {"message": "Chromerly URL-Kürzer"},
+"ExtensionDesc": {"message": "Chromerly ist eine einfache Erweiterung zum Kürzen von URLs, klick einfach auf das Icon oder benutze das Schlüsselwort urly in der Addressleiste. Das hier ist meine erste Erweiterung. :)"},
+
+   "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Kürze eine URL!"},
+"UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Verarbeite..."},
+    "UrlyFailed": {"description": "Icon's tooltip: failed",     "message": "Fehler!"},
+
+"FailGeneral": {"description": "Notification text: fail",          "message": "Fehler beim Kürzen, versuch es später nochmal!"},
+  "FailLimit": {"description": "Notification text: limit reached", "message": "Fehler beim Kürzen, maximale Anzahl der Kürzungen erreicht!"},
+ "FailFormat": {"description": "Notification text: bad format",    "message": "Fehler beim Kürzen, überprüfe die Eingabe!"},
+
+"NoticeCopied": {"description": "Notification text: copied",   "message": "Addresse kopiert!"},
+"NoticeQRScan": {"description": "Notification text: QR title", "message": "Scan mich mit deinem Smartphone!"}
+}
