@@ -1,6 +1,6 @@
 {
 "ExtensionName": {"message": "Chromerly URL-shortener"},
-"ExtensionDesc": {"message": "Chromerly is a simple url-shortener extension, just click the icon to shorten current url or use the omnibox keyword url to shorten what ever you wish. This is my first extension. :)"},
+"ExtensionDesc": {"message": "Chromerly is a simple url-shortener extension, just click the icon to shorten current url or use the omnibox keyword urly to shorten what ever you wish. This is my first extension. :)"},
 
    "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Shorten url!"},
 "UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Processing..."},

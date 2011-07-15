@@ -1,6 +1,6 @@
 {
 "ExtensionName": {"message": "Chromerly URL-lyhentäjä"},
-"ExtensionDesc": {"message": "Chromerly on yksinkertainen url-lyhentäjä. Klikkaa vain kuvaketta lyhentääksesi nykyisen osoitteen tai käytä url avainsanaa omni-lootassa lyhentääksesi mitä tahansa. Tämä on ensimmäinen laajennokseni. :)"},
+"ExtensionDesc": {"message": "Chromerly on yksinkertainen url-lyhentäjä. Klikkaa vain kuvaketta lyhentääksesi nykyisen osoitteen tai käytä urly avainsanaa omni-lootassa lyhentääksesi mitä tahansa. Tämä on ensimmäinen laajennokseni. :)"},
 
    "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Lyhennä osoite!"},
 "UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Prosessoidaan..."},
