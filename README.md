@@ -5,7 +5,7 @@ Chromerly is a Chrome extension to utilize the Finnish [urly.fi](http://urly.fi/
 Features
 --------
 * Simple icon to click on every site to shorten it's url
-* Omnibox integration - just type url to use it and then enter your url to shorten
+* Omnibox integration - just type urly, press tab and enter your url to shorten it
 * Sleek notification with QR-code for us smartphone owners
 * Translated to English, Hungarian, German and Finnish (Feel free to send me your translation!)
 
