@@ -18,7 +18,7 @@ Planned Features
 Contributos
 -----------
 * tuhoojabotti (Ville Lahdenvuo) - Main developer
-* Pettis - (urly.fi and it's api)[http://urly.fi/]
+* Pettis - [urly.fi and it's api](http://urly.fi/)
 * Wing - Help with icons
 
 ### Translations
