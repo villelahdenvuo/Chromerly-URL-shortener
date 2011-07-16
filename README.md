@@ -20,6 +20,7 @@ Contributors
 -----------
 * tuhoojabotti (Ville Lahdenvuo) – Main developer
 * Pettis (Juha Petäjäjärvi) – [Urly](http://urly.fi/ "In Finnish") and it's api
+* jhh (Jaakko-Heikki Heusala) – Additional programming
 * mikeful (Mikko Niemikorpi) – Teh awsum README logo!
 * Crystal Project (Everaldo Coelho) – Processing and failure icons
 

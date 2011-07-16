@@ -8,6 +8,7 @@ height:120px;
 font-family:sans-serif;
 overflow:hidden;
 margin: 2px;
+cursor:pointer;
 }
 div {
 display:-webkit-box;
@@ -17,28 +18,36 @@ height:120px;
 }
 img {float:left;}
 span {font-size:23px;}
-a {font-size: 30px;}
+a {font-size:30px;}
+small {font-size:10px;}
 </style>
 </head>
 <body>
 <!-- Our data elements -->
 <img id="img" src="graphics/qr.png" alt="QR-Code" width="120" height="120"/>
-<div><a href="#" id="url">...</a><br />
+<div><small id="orig"></small><br /><a href="#" id="url">...</a><br />
 <span id="text">Osoite kopioitu leikepöydälle!</span></div>
 <!-- And some script to bring them alive -->
 <script>
-var h = window.location.hash.substring(1), // Get the shortened url
-    i = document.getElementById("url"),    // Handle to the input box
+var h = window.location.hash.substring(1).split(" ")[0],     // Get the shortened url
+    o = shorturl(window.location.hash.substr(2 + h.length)), // And the original url
+    s = document.getElementById("orig"),   // Handle to original link text
+    i = document.getElementById("url"),    // Handle to the link
     t = document.getElementById("text");   // Notification text
     m = document.getElementById("img");    // QR-Code image
 // Link
 i.href = h;
 i.innerText = h.substring(7);
 // Notification text
+s.innerText = o.length > 32 ? o.substr(0, 32) + '...' : o;
 t.innerText = chrome.i18n.getMessage('NoticeCopied');
 // QR-Code image
 m.title = chrome.i18n.getMessage('NoticeQRScan');
 m.src = 'http://chart.googleapis.com/chart?chs=120x120&cht=qr&chld=Q|0&chl=' + escape(h);
+// Close notification on click
+window.onclick = function () {window.close();}
+// Helpful little function, thanks to jhh!
+function shorturl(url) {return url.length > 32 ? url.replace(/^([^:]+:\/\/[^\/]+).*(\/[^\/?]+)(\?.*)?$/, "$1/...$2") : url;}
 </script>
 </body>
 </html>

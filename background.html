@@ -27,22 +27,22 @@
   window.onload = function () {
     chrome.contextMenus.create({ //// PAGE
         "title": chrome.i18n.getMessage('ContextPage'),
-        "contexts": ["page"], "onclick": handleContext});
+        "contexts": ["page"], "onclick": handleContextPage});
     chrome.contextMenus.create({ //// SELECTION
         "title": chrome.i18n.getMessage('ContextSelection'),
-        "contexts": ["selection"], "onclick": handleContext});
+        "contexts": ["selection"], "onclick": handleContextSel});
     chrome.contextMenus.create({ //// LINK
         "title": chrome.i18n.getMessage('ContextLink'),
-        "contexts": ["link"], "onclick": handleContext});
+        "contexts": ["link"], "onclick": handleContextLink});
     chrome.contextMenus.create({ //// IMAGE
         "title": chrome.i18n.getMessage('ContextImage'),
-        "contexts": ["image"], "onclick": handleContext});
+        "contexts": ["image"], "onclick": handleContextMedia});
     chrome.contextMenus.create({ //// VIDEO
         "title": chrome.i18n.getMessage('ContextVideo'),
-        "contexts": ["video"], "onclick": handleContext});
+        "contexts": ["video"], "onclick": handleContextMedia});
     chrome.contextMenus.create({ //// AUDIO
         "title": chrome.i18n.getMessage('ContextAudio'),
-        "contexts": ["audio"], "onclick": handleContext});
+        "contexts": ["audio"], "onclick": handleContextMedia});
   }
 
   // UPDATE - Show icon on tabs
@@ -60,7 +60,7 @@
       if (!e) { // No error!
         setTab('16', 'UrlyShorten', tab);
         copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
-        var notification = webkitNotifications.createHTMLNotification('note.html#' + s);
+        var notification = webkitNotifications.createHTMLNotification('note.html#' + s + ' ' + tab.url);
         notification.show();
       } else { // Failed :/
         setTab('stop', 'UrlyFailed', tab);
@@ -79,18 +79,18 @@
   });
 
   // CONTEXT menu clicked
-  function handleContext(i, tab) {
-    var url = "";
-    if(i.mediaType) {             url = i.srcUrl;         // Clicked Image, Video or Audio
-    } else if (i.linkUrl) {       url = i.linkUrl;        // Clicked Link
-    } else if (i.selectionText) { url = i.selectionText;  // Clicked Selection
-    } else if (i.pageUrl) {       url = i.pageUrl;}       // Clicked Page
+  function handleContextPage  (i, tab) { handleContext(i.pageUrl, tab); }
+  function handleContextSel   (i, tab) { handleContext(i.selectionText, tab); }
+  function handleContextLink  (i, tab) { handleContext(i.linkUrl, tab); }
+  function handleContextMedia (i, tab) { handleContext(i.srcUrl, tab); }
+  // Handle the click generally
+  function handleContext(url, tab) {
     setTab('loading', 'UrlyProcessing', tab);
     shortenURL(url, function (e, s) {
       if (!e) { // No error!
         setTab('16', 'UrlyShorten', tab);
         copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
-        var notification = webkitNotifications.createHTMLNotification('note.html#' + s);
+        var notification = webkitNotifications.createHTMLNotification('note.html#' + s + ' ' + url);
         notification.show();
       } else { // Failed :/
         setTab('stop', 'UrlyFailed', tab);
@@ -113,7 +113,7 @@
     shortenURL(text, function (e, s) {
       if (!e) { // No error!
         copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
-        var notification = webkitNotifications.createHTMLNotification('note.html#' + s);
+        var notification = webkitNotifications.createHTMLNotification('note.html#' + s + ' ' + tab.url);
         notification.show();
       } else { // Failed :/
         var notification = webkitNotifications.createNotification('graphics/stop.png',
@@ -130,8 +130,8 @@
 
   // SHORTEN url and call callback(errors?, shortened/error text)
   function shortenURL(url, cb) {
-    // Check if url seems rational (Thanks to Daring Fireball for the regex and searls (Justin Searls) for making it work in JS)
-    url = url.match(/\b((?:https?:\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/i);
+    // Check if url seems rational (Thanks to Daring Fireball for the regex and searls (Justin Searls) for making it work in JS) - Added support for chrome:// links
+    url = url.match(/\b((?:(https?|chrome):\/\/|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/i);
     if (!url) { // url is null
       cb(true, 'FailFormat');
       return;
