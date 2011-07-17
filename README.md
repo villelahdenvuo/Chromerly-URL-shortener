@@ -4,7 +4,7 @@ Chromerly URL-shortener
 
 Chromerly is a Chrome extension to utilize the Finnish [urly.fi](http://urly.fi/). The license of this extension is [GPL version 3](http://github.com/tuhoojabotti/Chromerly-URL-shortener/blob/master/COPYING).
 
-**Now on the [Crome Web Store](https://chrome.google.com/webstore/detail/ebfkcfgnlbfdnjfpoegigihcijkmnpee "Get it now!")**
+**Now on the [Chrome Web Store](https://chrome.google.com/webstore/detail/ebfkcfgnlbfdnjfpoegigihcijkmnpee "Get it now!")**
 
 Features
 --------

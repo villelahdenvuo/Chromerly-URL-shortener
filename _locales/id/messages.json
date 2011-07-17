@@ -1,6 +1,6 @@
 {
 "ExtensionName": {"message": "Chromerly URL-memperpendek"},
-"ExtensionDesc": {"message": "Chromerly adalah ekstensi url-Shortener sederhana, hanya klik ikon untuk memperpendek url saat ini atau menggunakan kata kunci omnibox urly untuk mempersingkat apa yang pernah anda inginkan Ini adalah ekstensi pertama saya:..)"} ,
+"ExtensionDesc": {"message": "Chromerly adalah ekstensi url-memperpendek sederhana, hanya klik ikon untuk memperpendek url saat ini atau menggunakan kata kunci omnibox urly untuk mempersingkat apa yang pernah anda inginkan Ini adalah ekstensi pertama saya:..)"} ,
 
    "UrlyShorten": {"description": "tooltip Icon s: siap",       "message": "! Mempersingkat url"},
 "UrlyProcessing": {"description": "tooltip Icon s: pengolahan", "message": "Pengolahan ..."},
