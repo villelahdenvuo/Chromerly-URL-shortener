@@ -1,0 +1,22 @@
+{
+"ExtensionName": {"message": "Chromerly URL-memperpendek"},
+"ExtensionDesc": {"message": "Chromerly adalah ekstensi url-Shortener sederhana, hanya klik ikon untuk memperpendek url saat ini atau menggunakan kata kunci omnibox urly untuk mempersingkat apa yang pernah anda inginkan Ini adalah ekstensi pertama saya:..)"} ,
+
+   "UrlyShorten": {"description": "tooltip Icon s: siap",       "message": "! Mempersingkat url"},
+"UrlyProcessing": {"description": "tooltip Icon s: pengolahan", "message": "Pengolahan ..."},
+    "UrlyFailed": {"description": "tooltip Icon s: gagal",      "message": "! Gagal"},
+
+"FailGeneral": {"description": "teks Pemberitahuan: gagal",             "message": "Gagal untuk mempersingkat Aku minta maaf, coba lagi nanti.!"},
+  "FailLimit": {"description": "teks Pemberitahuan: batas mencapai",    "message": "Gagal untuk mempersingkat, memperpendek kuota Anda habis!"},
+ "FailFormat": {"description": "teks Pemberitahuan: format yang buruk", "message": "! Gagal untuk mempersingkat, periksa input Anda"},
+
+"NoticeCopied": {"description": "teks Pemberitahuan: disalin",  "message": "! Alamat disalin ke clipboard"},
+"NoticeQRScan": {"description": "teks Pemberitahuan: judul QR", "message": "! Pindai saya dengan smartphone"},
+
+     "ContextPage": {"description": "teks Konteks: halaman",     "message": "Mempersingkat url halaman"},
+"ContextSelection": {"description": "teks Konteks: seleksi",     "message": "Mempersingkat link teks yang dipilih"},
+     "ContextLink": {"description": "teks Konteks: link",        "message": "Mempersingkat link yang dipilih"},
+    "ContextImage": {"description": "teks Konteks: gambar",      "message": "Mempersingkat url gambar yang dipilih"},
+    "ContextVideo": {"description": "teks Konteks: video HTML5", "message": "Mempersingkat url video yang dipilih"},
+    "ContextAudio": {"description": "teks Konteks: audio HTML5", "message": "Mempersingkat url audio yang dipilih"}
+}

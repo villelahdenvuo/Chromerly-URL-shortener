@@ -28,3 +28,4 @@ Contributors
 * tuhoojabotti (Ville Lahdenvuo) – English & Finnish
 * Hidden (Denes) – Hungarian
 * Mowmow (Moritz Köhler) – German
+* Lulu Latifa Leonita – Indonesian
