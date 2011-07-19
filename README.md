@@ -31,3 +31,4 @@ Contributors
 * Hidden (Denes) – Hungarian
 * Mowmow (Moritz Köhler) – German
 * Lulu Latifa Leonita – Indonesian
+* [D]emon (Tomaz Zabel) – Slovenian
