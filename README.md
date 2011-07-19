@@ -32,3 +32,4 @@ Contributors
 * Mowmow (Moritz Köhler) – German
 * Lulu Latifa Leonita – Indonesian
 * [D]emon (Tomaz Zabel) – Slovenian
+* Jagdos (Kristian Jagd) – Danish

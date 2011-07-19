@@ -1,0 +1,22 @@
+{
+"ExtensionName": {"message": "Chromerly URL-forkorter"},
+"ExtensionDesc": {"message": "Chromerly er en simpel url-forkorter udvidelse. Du skal bare klikke på ikonet for at forkorte den nyværende url, eller brug omnibox nøgleordet urly for at forkorte hvad du har lyst til. Dette er min første udvidelse"},
+
+   "UrlyShorten": {"description": "Icon's tooltip: klar",      "message": "Forkort url!"},
+"UrlyProcessing": {"description": "Icon's tooltip: Forkorter", "message": "Forkorter..."},
+    "UrlyFailed": {"description": "Icon's tooltip: fejl",      "message": "Fejl!"},
+
+"FailGeneral": {"description": "Notification text: fejl",          "message": "Forkortelse gik galt. Det er jeg frygteligt ked af, prøv igen senere!"},
+  "FailLimit": {"description": "Notification text: grænse nået",   "message": "Kunne ikke forkorte, din quota er opbrugt!"},
+ "FailFormat": {"description": "Notification text: dårligt input", "message": "Kunne ikke forkorte, tjek dit input!"},
+
+"NoticeCopied": {"description": "Notification text: kopieret",   "message": "Addressen er kopieret til udklipsholderen!"},
+"NoticeQRScan": {"description": "Notification text: QR titel",   "message": "Scan mig med din smartphone!!"},
+
+     "ContextPage": {"description": "Context text: side",        "message": "Forkort side url"},
+"ContextSelection": {"description": "Context text: markering",   "message": "Forkort valgt tekst link"},
+     "ContextLink": {"description": "Context text: link",        "message": "Forkort valgt link"},
+    "ContextImage": {"description": "Context text: billede",     "message": "Forkort valgt billed url"},
+    "ContextVideo": {"description": "Context text: html5 video", "message": "Forkort valgt video url"},
+    "ContextAudio": {"description": "Context text: html5 lyd",   "message": "Forkort valgt lyd addresse"}
+}
