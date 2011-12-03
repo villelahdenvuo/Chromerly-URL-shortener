@@ -61,6 +61,16 @@
         setTab('16', 'UrlyShorten', tab);
         copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
         var notification = webkitNotifications.createHTMLNotification('note.html#' + s + ' ' + tab.url);
+        if (localStorage['hasTimeout'] === 'true') {
+          var timeout = parseInt(localStorage['timeout']);
+          if (timeout === 0) {
+            return; // No notification!
+          } else {
+            setTimeout(function () {
+              notification.cancel();
+            }, timeout * 1000);
+          }
+        }
         notification.show();
       } else { // Failed :/
         setTab('stop', 'UrlyFailed', tab);
@@ -91,6 +101,16 @@
         setTab('16', 'UrlyShorten', tab);
         copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
         var notification = webkitNotifications.createHTMLNotification('note.html#' + s + ' ' + url);
+        if (localStorage['hasTimeout'] === 'true') {
+          var timeout = parseInt(localStorage['timeout']);
+          if (timeout === 0) {
+            return; // No notification!
+          } else {
+            setTimeout(function () {
+              notification.cancel();
+            }, timeout * 1000);
+          }
+        }
         notification.show();
       } else { // Failed :/
         setTab('stop', 'UrlyFailed', tab);
@@ -114,6 +134,16 @@
       if (!e) { // No error!
         copyToClipboard(s); // Copy url and show notification - using url hash to transport the url
         var notification = webkitNotifications.createHTMLNotification('note.html#' + s + ' ' + tab.url);
+        if (localStorage['hasTimeout'] === 'true') {
+          var timeout = parseInt(localStorage['timeout']);
+          if (timeout === 0) {
+            return; // No notification!
+          } else {
+            setTimeout(function () {
+              notification.cancel();
+            }, timeout * 1000);
+          }
+        }
         notification.show();
       } else { // Failed :/
         var notification = webkitNotifications.createNotification('graphics/stop.png',

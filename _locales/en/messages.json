@@ -18,5 +18,13 @@
      "ContextLink": {"description": "Context text: link",        "message": "Shorten selected link"},
     "ContextImage": {"description": "Context text: image",       "message": "Shorten selected image url"},
     "ContextVideo": {"description": "Context text: html5 video", "message": "Shorten selected video url"},
-    "ContextAudio": {"description": "Context text: html5 audio", "message": "Shorten selected audio url"}
+    "ContextAudio": {"description": "Context text: html5 audio", "message": "Shorten selected audio url"},
+    
+      "OptionsTitle": {"description": "h1 on options",   "message": "Options for Chromerly URL-shortener"},
+"OptionsDescription": {"description": "description",     "message": ""},
+    "OptionsTimeout": {"description": "label for range", "message": "Timeout for notification (seconds):"},
+ "OptionsTimeoutTip": {"description": "tip for timeout", "message": "Note: 0 means no notification AT ALL, also it gets tricky to use the QR-code with a short timeout."},
+       "OptionsSave": {"description": "Save-button",     "message": "Save"},
+      "OptionsReset": {"description": "Reset-button",    "message": "Reset"},
+       "OptionsDone": {"description": "Done!",           "message": "Done!"}    
 }
