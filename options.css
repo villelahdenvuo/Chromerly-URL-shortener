@@ -34,19 +34,31 @@ h1 {
   text-align: center;
   vertical-align: 0.4em;
 }
-#hasTimeout {
+
+#options {
+  margin-left: 150px;
+  text-align: left;
+}
+
+input[type=checkbox] {
   -webkit-transition: -webkit-transform 0.3s ease;
   -webkit-transform: rotate(45deg) scale(1.3,1.3);
 }
-#hasTimeout:checked {
+input[type=checkbox]:checked {
   -webkit-transform: none;
 }
-#timeoutLabel {
+
+label {
   margin-left: 5px;
   font-size: 18px;
   cursor: pointer;
   -webkit-transition: color 0.1s ease;
 }
+
+label.disabled {
+  color: #AAA;
+}
+
 #timeoutRange {
   vertical-align: text-top;
   height: 22px;

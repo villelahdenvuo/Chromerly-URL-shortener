@@ -18,6 +18,6 @@
         "default_icon": "graphics/16.png",
         "default_title": "__MSG_UrlyShorten__"
     },
-    "permissions": ["http://*/", "tabs", "notifications", "contextMenus", "clipboardWrite"],
+    "permissions": ["http://*/", "tabs", "notifications", "contextMenus", "clipboardWrite", "webRequest", "webRequestBlocking"],
     "default_locale": "en"
 }

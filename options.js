@@ -18,7 +18,8 @@
 // Set defaults
 var defaults = {
   hasTimeout: false,
-  timeout: 30
+  timeout: 30,
+  showInfo: false
 };
 
 // On document ready
@@ -27,16 +28,23 @@ $(function () {
   // Localize for foreign users
   localizePage();
 
-  // Initialize setting scripts
   $('#hasTimeout').change(function () {
     if ($('#hasTimeout').is(':checked')) {
       $('#timeout,#timeoutRange').prop('disabled', false);
-      $('label[for="hasTimeout"]').css('color', '#000');
+      $('label[for="hasTimeout"]').removeClass('disabled');
     } else {
       $('#timeout,#timeoutRange').prop('disabled', true);
-      $('label[for="hasTimeout"]').css('color', '#AAA');
+      $('label[for="hasTimeout"]').addClass('disabled');
     }
-  });
+  }).change();
+
+  $('#showInfo').change(function () {
+    if ($(this).is(':checked')) {
+      $('label[for="' + this.id + '"]').removeClass('disabled');
+    } else {
+      $('label[for="' + this.id + '"]').addClass('disabled');
+    }
+  }).change();
 
   // Changing this will update the number
   $('#timeoutRange').change(function () {
@@ -52,7 +60,6 @@ $(function () {
   // Also changing the number will update the slider
   function updateTimeout() {
     $('#timeoutRange').val(this.valueAsNumber);
-
     if ($('#timeout').val() < 1) {
       $('#timeoutWarning').slideDown();
     } else {
@@ -67,35 +74,33 @@ $(function () {
 
   // Load options from localStorage
   restoreOptions();
-
-  if (!$('#hasTimeout').is(':checked')) {
-    $('#timeout,#timeoutRange').prop('disabled', true);
-    $('label[for="hasTimeout"]').css('color', '#AAA');
-  }
-
 });
 
 // Restores options from localStorage
 function restoreOptions() {
-  $('#hasTimeout')[0].checked = (localStorage['hasTimeout'] === 'true') || defaults.hasTimeout;
+  $('#hasTimeout')
+    .prop('checked', (localStorage['hasTimeout'] === 'true') || defaults.hasTimeout).change();
   $('#timeout').val(parseInt(localStorage['timeout'] || defaults.timeout));
   $('#timeoutRange').val(parseInt(localStorage['timeout'] || defaults.timeout));
+  $('#showInfo')
+    .prop('checked', (localStorage['showInfo'] === 'true') || defaults.showInfo).change();
 }
 
 // Saves options to localStorage.
 function saveOptions() {
-  localStorage['hasTimeout'] = $('#hasTimeout')[0].checked;
+  localStorage['hasTimeout'] = $('#hasTimeout').prop('checked');
   localStorage['timeout'] = $('#timeout').val();
+  localStorage['showInfo'] = $('#showInfo').prop('checked')
   showDone();
 }
 
 // Resets options
 function resetOptions() {
   // Reset
-  $('#hasTimeout')[0].checked = defaults.hasTimeout;
+  $('#hasTimeout').prop('checked', defaults.hasTimeout).change();
   $('#timeout').val(defaults.timeout);
   $('#timeoutRange').val(defaults.timeout);
-  $('#hasTimeout').trigger('change');
+  $('#showInfo').prop('checked', defaults.showInfo).change();
   // Save
   saveOptions();
   showDone();

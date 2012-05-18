@@ -25,6 +25,7 @@
 <script>
   ///////////////////////// INITIALIZATION /////////////////////////
   localStorage['UrlyBaseURL'] = 'http://urly.fi/';
+  var UrlyReserved = new RegExp(/info|static/);
   // Create context menus
   window.onload = function () {
     chrome.contextMenus.create({ //// PAGE
@@ -60,11 +61,24 @@
   }
 
   // Show icon
-  chrome.tabs.onUpdated.addListener(function(tabId) {
+  chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
     chrome.pageAction.show(tabId);
   });
 
   ///////////////////////// INTERACTION WITH THE BROWSER /////////////////////////
+
+  // URLY.FI REQUEST
+  function handleUrlyRequest(data) {
+    // Don't redirect certain pages (like info itself)
+    if (localStorage['showInfo'] === 'false' || UrlyReserved.test(data.url)) {
+      return;
+    }
+    // Grab the code and redirect to info page
+    var code = data.url.substring(15);
+    return {redirectUrl: 'http:/urly.fi/info/' + code};
+  }
+  chrome.webRequest.onBeforeRequest.addListener(handleUrlyRequest,
+    {urls: ["http://urly.fi/*"], types: ["main_frame"]}, ["blocking"]);
 
   // ICON CLICK
   chrome.pageAction.onClicked.addListener(function (tab) {
@@ -145,7 +159,7 @@
       notification.cancel();
     }, 10000);
   }
-  
+
   // SHORTEN url and call callback(errors?, shortened/error text)
   function shortenURL(url, cb) {
     // Check if url seems rational (Thanks to Daring Fireball for the regex and searls (Justin Searls) for making it work in JS) - Added support for chrome:// links

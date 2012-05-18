@@ -31,14 +31,19 @@
     </header>
     <!-- Options HTML -->
     <div style="display: none;" id="timeoutWarning" i18n="OptionsTimeoutWarning"></div>
-    <input id="hasTimeout" type="checkbox" />
-    <label id="timeoutLabel" for="hasTimeout" i18n="OptionsTimeout" i18n_title="OptionsTimeoutTip"></label>
-    <input id="timeoutRange" type="range" min="0" max="60" />
-    <input id="timeout" type="number" min="0" />
-    <br /><br />
-    <button onclick="saveOptions()" i18n="OptionsSave"></button>
-    <button onclick="resetOptions()" i18n="OptionsReset"></button>
-    <span id="msg" style="opacity:0" i18n="OptionsDone"></span>
+    <div id="options">
+      <input id="hasTimeout" type="checkbox" />
+      <label id="timeoutLabel" for="hasTimeout" i18n="OptionsTimeout" i18n_title="OptionsTimeoutTip"></label>
+      <input id="timeoutRange" type="range" min="0" max="60" />
+      <input id="timeout" type="number" min="0" />
+      <br />
+      <input id="showInfo" type="checkbox" />
+      <label id="infoLabel" for="showInfo" i18n="OptionsInfo" i18n_title="OptionsInfoTip"></label>
+      <br /><br />
+      <button onclick="saveOptions()" i18n="OptionsSave"></button>
+      <button onclick="resetOptions()" i18n="OptionsReset"></button>
+      <span id="msg" style="opacity:0" i18n="OptionsDone"></span>
+    </div>
     <footer>
       <a href="https://chrome.google.com/webstore/detail/ebfkcfgnlbfdnjfpoegigihcijkmnpee"
       title="Chrome Web Store">Chromerly URL-shortener</a> <span i18n="OptionsChromerlyBy"></span>
