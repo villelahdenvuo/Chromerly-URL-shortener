@@ -10,7 +10,7 @@
   "FailLimit": {"description": "Notification text: limit reached", "message": "Failed to shorten, your shortening quota is depleted!"},
  "FailFormat": {"description": "Notification text: bad format",    "message": "Failed to shorten, check your input!"},
 
-"NoticeCopied": {"description": "Notification text: copied",   "message": "Address copied to clipboard!"},
+"NoticeCopied": {"description": "Notification text: copied",   "message": "Address copied!"},
 "NoticeQRScan": {"description": "Notification text: QR title", "message": "Scan me with your smartphone!"},
 
      "ContextPage": {"description": "Context text: page",        "message": "Shorten page url"},
@@ -19,12 +19,13 @@
     "ContextImage": {"description": "Context text: image",       "message": "Shorten selected image url"},
     "ContextVideo": {"description": "Context text: html5 video", "message": "Shorten selected video url"},
     "ContextAudio": {"description": "Context text: html5 audio", "message": "Shorten selected audio url"},
-    
-      "OptionsTitle": {"description": "h1 on options",   "message": "Options for Chromerly URL-shortener"},
-"OptionsDescription": {"description": "description",     "message": ""},
-    "OptionsTimeout": {"description": "label for range", "message": "Timeout for notification (seconds):"},
- "OptionsTimeoutTip": {"description": "tip for timeout", "message": "Note: 0 means no notification AT ALL, also it gets tricky to use the QR-code with a short timeout."},
-       "OptionsSave": {"description": "Save-button",     "message": "Save"},
-      "OptionsReset": {"description": "Reset-button",    "message": "Reset"},
-       "OptionsDone": {"description": "Done!",           "message": "Done!"}    
+
+          "OptionsTitle": {"description": "h1 on options",   "message": "Options for Chromerly URL-shortener"},
+        "OptionsTimeout": {"description": "label for range", "message": "Notification timeout"},
+ "OptionsTimeoutWarning": {"description": "a warning text",  "message": "You won't see notification <b>at all</b>!"},
+           "OptionsSave": {"description": "Save-button",     "message": "Save"},
+          "OptionsReset": {"description": "Reset-button",    "message": "Reset"},
+           "OptionsDone": {"description": "Done!",           "message": "Done!"},
+    "OptionsChromerlyBy": {"description": "Chromerly * name","message": "by"},
+        "OptionsProject": {"description": "Link to project", "message": "Github Page"}
 }

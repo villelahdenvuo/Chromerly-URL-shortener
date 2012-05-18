@@ -1,0 +1,94 @@
+/*  Chromerly is a Chrome Extension to utilize the Finnish urly.fi.
+    Copyright (C) 2011-2012  Ville 'tuhoojabotti' Lahdenvuo
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+body {
+  width: 800px;
+  margin: 20px auto;
+  font-family: sans-serif;
+  text-align: center;
+  position: relative;
+}
+header {
+  margin: 1em 0 2em 0;
+}
+header img {
+  margin-right: 10px;
+}
+h1 {
+  display: inline;
+  font-family: sans-serif;
+  text-align: center;
+  vertical-align: 0.4em;
+}
+#hasTimeout {
+  -webkit-transition: -webkit-transform 0.3s ease;
+  -webkit-transform: rotate(45deg) scale(1.3,1.3);
+}
+#hasTimeout:checked {
+  -webkit-transform: none;
+}
+#timeoutLabel {
+  margin-left: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  -webkit-transition: color 0.1s ease;
+}
+#timeoutRange {
+  vertical-align: text-top;
+  height: 22px;
+}
+#timeout {
+  width: 40px;
+  vertical-align: text-top;
+  height: 18px;
+}
+#timeoutWarning {
+  position: absolute;
+  right: 0px;
+  text-align: left;
+  padding-top: 6px;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+button {
+  width: 60px;
+  height: 30px;
+}
+#msg {
+  margin: 0 2px 0 10px;
+  -webkit-transition: all 0.5s ease;
+  color: #0f0;
+  font-weight: bold;
+  display: inline-block;
+}
+.rot {
+  -webkit-transform: skewX(-25deg);
+}
+
+#history {
+  text-align: left;
+}
+
+footer {
+  margin: 4em 0 1em 0;
+  font-size: 0.9em;
+  color: #aaa;
+}
+footer a {
+  color: #777;
+}

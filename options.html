@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
     Chromerly is a Chrome Extension to utilize the Finnish urly.fi.
-    Copyright (C) 2011  Ville 'tuhoojabotti' Lahdenvuo
+    Copyright (C) 2011-2012  Ville 'tuhoojabotti' Lahdenvuo
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -17,135 +17,34 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <html>
-<head>
-<meta charset="utf-8" />
-<title i18n="ExtensionName"></title>
-</head>
-<style>
-body {
-width:800px;
-margin:20px auto;
-font-family:sans-serif;
-text-align:center;
-}
-h1 {
-font-family:sans-serif;
-text-align:center;
-}
-#hasTimeout {
--webkit-transition:-webkit-transform 0.5s ease;
--webkit-transform:rotate(45deg);
-}
-#hasTimeout:checked {
--webkit-transform:rotate(0deg);
-}
-#timeoutLabel {
-font-size:18px;
-cursor:pointer;
--webkit-transition:color 0.1s ease;
-}
-#timeoutRange {
-vertical-align:text-top;
-height:22px;
-}
-#timeout {
-width:35px;
-vertical-align:text-top;
-height:18px;
-}
-</style>
-<body>
-<h1 i18n="OptionsTitle">Options</h1>
-<!-- Options HTML -->
-<input id="hasTimeout" type="checkbox" />
-<label id="timeoutLabel" for="hasTimeout" i18n="OptionsTimeout" i18n_title="OptionsTimeoutTip"></label>
-<input id="timeoutRange" type="range" min="0" max="60" />
-<input id="timeout" type="number" />
-<br /><br />
-<button onclick="saveOptions()" i18n="OptionsSave"></button>
-<button onclick="resetOptions()" i18n="OptionsReset"></button>
-<br />
-<span id="msg" style="display:none;" i18n="OptionsDone"></span>
-<!-- Options Javascript -->
-<script type="text/javascript" src="libs/jquery-1.7.1.min.js"></script>
-<script type="text/javascript">
-
-// Set defaults
-var defaults = {
-  hasTimeout: false,
-  timeout: 30
-};
-
-// On document ready
-$(function () {
-  // Localize for foreign users
-  localizePage();
-
-  // Initialize setting scripts
-  $('#hasTimeout').change(function () {
-    if ($('#hasTimeout').is(':checked')) {
-      $('#timeout,#timeoutRange').prop('disabled', false);
-      $('label[for="hasTimeout"]').css('color', '#000');
-    } else {
-      $('#timeout,#timeoutRange').prop('disabled', true);
-      $('label[for="hasTimeout"]').css('color', '#AAA');
-    }
-  });
-  $('#timeoutRange').change(function () {  // Changing this will update the number
-    $('#timeout').val(this.valueAsNumber);
-  });
-  function updateTimeout() {               // Also changing the number will update the slider
-    $('#timeoutRange').val(this.valueAsNumber);
-  }
-  $('#timeout')
-    .change(updateTimeout)
-    .mousemove(updateTimeout)
-    .keydown(updateTimeout);
-
-  // Load options from localStorage
-  restoreOptions();
-  if (!$('#hasTimeout').is(':checked')) {
-    $('#timeout,#timeoutRange').prop('disabled', true);
-    $('label[for="hasTimeout"]').css('color', '#AAA');
-  }
-});
-
-// Restores options from localStorage
-function restoreOptions () {
-  $('#hasTimeout')[0].checked = (localStorage['hasTimeout'] === 'true') || defaults.hasTimeout;
-  $('#timeout').val(parseInt(localStorage['timeout'] || defaults.timeout));
-  $('#timeoutRange').val(parseInt(localStorage['timeout'] || defaults.timeout));
-}
-
-// Saves options to localStorage.
-function saveOptions () {
-  localStorage['hasTimeout'] = $('#hasTimeout')[0].checked;
-  localStorage['timeout'] = $('#timeout').val();
-  $('#msg').stop(0, 0).fadeIn(300).delay(500).slideUp(1000);
-}
-
-// Resets options
-function resetOptions () {
-  // Reset
-  $('#hasTimeout')[0].checked = defaults.hasTimeout;
-  $('#timeout').val(defaults.timeout);
-  $('#timeoutRange').val(defaults.timeout);
-  $('#hasTimeout').trigger('change');
-  // Save
-  localStorage['hasTimeout'] = $('#hasTimeout')[0].checked;
-  localStorage['timeout'] = $('#timeout').val();
-  $('#msg').stop(0, 0).fadeIn(300).delay(500).slideUp(1000);
-}
-
-// Localizes page for foreign users
-function localizePage() {
-  $("[i18n]:not(.i18n-replaced)").each(function() {
-    $(this).html(chrome.i18n.getMessage($(this).attr("i18n")));
-  });
-  $("[i18n_title]:not(.i18n-replaced)").each(function() {
-    $(this).attr("title", chrome.i18n.getMessage($(this).attr("i18n_title")));
-  });
-}
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title i18n="ExtensionName"></title>
+    <link rel="stylesheet" href="options.css" />
+    <script src="libs/jquery-1.7.1.min.js"></script>
+    <script src="options.js"></script>
+  </head>
+  <body>
+    <header>
+      <img src="graphics/48.png" width="48" height="48" />
+      <h1 i18n="OptionsTitle">Options</h1>
+    </header>
+    <!-- Options HTML -->
+    <div style="display: none;" id="timeoutWarning" i18n="OptionsTimeoutWarning"></div>
+    <input id="hasTimeout" type="checkbox" />
+    <label id="timeoutLabel" for="hasTimeout" i18n="OptionsTimeout" i18n_title="OptionsTimeoutTip"></label>
+    <input id="timeoutRange" type="range" min="0" max="60" />
+    <input id="timeout" type="number" min="0" />
+    <br /><br />
+    <button onclick="saveOptions()" i18n="OptionsSave"></button>
+    <button onclick="resetOptions()" i18n="OptionsReset"></button>
+    <span id="msg" style="opacity:0" i18n="OptionsDone"></span>
+    <footer>
+      <a href="https://chrome.google.com/webstore/detail/ebfkcfgnlbfdnjfpoegigihcijkmnpee"
+      title="Chrome Web Store">Chromerly URL-shortener</a> <span i18n="OptionsChromerlyBy"></span>
+      Ville "<a href="http://tuhoojabotti.com">tuhoojabotti</a>"
+      Lahdenvuo &ndash; <a href="https://github.com/tuhoojabotti/Chromerly-URL-shortener">
+      <span i18n="OptionsProject"></span></a>
+    </footer>
+  </body>
 </html>
