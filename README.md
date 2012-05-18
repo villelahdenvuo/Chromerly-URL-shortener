@@ -11,10 +11,11 @@ Features
 * Simple icon to click on every site to shorten it's url
 * Omnibox integration - just type urly, press tab and enter your url to shorten it
 * Sleek notification with QR-code for us smartphone owners
-* Translated to English, Hungarian, German and Finnish (Feel free to send me your translation!)
 * Context menu integration for images, videos, audio, links and selected text!
+* **NEW:** Block Urly links to preview where they redirect before opening them!
+* Translated to English, Hungarian, German and Finnish (Feel free to send me your translation!)
 
-Planned Features
+Feature requests
 ----------------
 * Suggest your ideas and/or fork the project!
 
