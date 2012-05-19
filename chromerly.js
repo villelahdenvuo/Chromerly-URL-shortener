@@ -19,6 +19,7 @@ var UrlyReserved = new RegExp(/info|static/);
 var UrlyInfoPage = new RegExp(/http:\/\/urly.fi\/info\/.*/);
 var infoTabs = [];
 var copyInput = document.getElementById('url');
+var listeningRequests = false;
 
 // Create context menus
 window.onload = function () {
@@ -63,6 +64,13 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
   }
 });
 
+chrome.extension.onRequest.addListener(function (req) {
+  if (req.msg == 'canBlock' && !listeningRequests) {
+    console.log('Received permission!');
+    chrome.permissions.contains({permissions: ["webRequest", "webRequestBlocking"]}, checkPermissions);
+  }
+});
+
 ///////////////////////// INTERACTION WITH THE BROWSER /////////////////////////
 
 // URLY.FI REQUEST
@@ -82,8 +90,16 @@ function handleUrlyRequest(data) {
   var code = data.url.substring(15);
   return {redirectUrl: 'http:/urly.fi/info/' + code};
 }
-chrome.webRequest.onBeforeRequest.addListener(handleUrlyRequest,
-  {urls: ["http://urly.fi/*"], types: ["main_frame"]}, ["blocking"]);
+
+function checkPermissions(result) {
+  if (result) {
+    listeningRequests = true;
+    chrome.webRequest.onBeforeRequest.addListener(handleUrlyRequest,
+      {urls: ["http://urly.fi/*"], types: ["main_frame"]}, ["blocking"]);
+  }
+}
+chrome.permissions.contains({permissions: ["webRequest", "webRequestBlocking"]}, checkPermissions);
+
 
 // ICON CLICK
 chrome.pageAction.onClicked.addListener(function (tab) {

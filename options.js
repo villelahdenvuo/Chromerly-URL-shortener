@@ -29,12 +29,36 @@ $(function () {
 
   // Localize for foreign users
   localizePage();
-  
+
   // Check extensions permissions
-  chrome.permissions.contains(
-    {permissions: ["webRequest", "webRequestBlocking"]},
-    function (result) { canBlock = !!result; }
-  );
+  function checkPermissions(result) {
+    canBlock = !!result;
+    // Load options from localStorage
+    restoreOptions();
+
+    function granted(granted) {
+      canBlock = !!granted;
+      if (canBlock) {
+        $('label[for="showInfo"]').css('text-decoration', 'none');
+        $('#requestPermission').remove();
+        chrome.extension.sendRequest(null, {msg: 'canBlock'});
+      }
+    }
+
+    if (!canBlock) {
+      $('label[for="showInfo"]').css('text-decoration', 'line-through');
+      $('<button>')
+        .attr('id', 'requestPermission')
+        .text('Allow')
+        .appendTo('#allowBlock')
+        .click(function () {
+          chrome.permissions.request({permissions: ["webRequest", "webRequestBlocking"]}, granted);
+      })
+    } else {
+      chrome.extension.sendRequest(null, {msg: 'canBlock'});
+    }
+  }
+  chrome.permissions.contains({permissions: ["webRequest", "webRequestBlocking"]}, checkPermissions);
 
   $('#hasTimeout').change(function () {
     if ($('#hasTimeout').is(':checked')) {
@@ -48,29 +72,19 @@ $(function () {
 
   $('#showInfo').change(function () {
     if ($(this).is(':checked')) {
-      $('label[for="' + this.id + '"]').removeClass('disabled');
+      if (canBlock) {
+        $('label[for="' + this.id + '"]').removeClass('disabled');
+      }else {
+        $('#showInfo').prop('checked', false);
+      }
     } else {
       $('label[for="' + this.id + '"]').addClass('disabled');
     }
   }).change();
 
-  $('#showInfo,label[for="showInfo"]').click(function () {
-    // Request permission to block requests
-    if (!canBlock) {
-      chrome.permissions.request(
-        {permissions: ["webRequest", "webRequestBlocking"]},
-        function(granted) {
-          console.log('granted', granted, canBlock);
-          canBlock = !!granted;
-        }
-      );
-    }
-  });
-  
   // Changing this will update the number
   $('#timeoutRange').change(function () {
     $('#timeout').val(this.valueAsNumber);
-
     if ($('#timeout').val() < 1) {
       $('#timeoutWarning').slideDown();
     } else {
@@ -96,9 +110,7 @@ $(function () {
   // Bind the buttons
   $('#saveButton').click(saveOptions);
   $('#resetButton').click(resetOptions);
-    
-  // Load options from localStorage
-  restoreOptions();
+
 });
 
 // Restores options from localStorage

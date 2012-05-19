@@ -36,7 +36,7 @@ h1 {
 }
 
 #options {
-  margin-left: 150px;
+  margin-left: 145px;
   text-align: left;
 }
 
@@ -75,6 +75,11 @@ label.disabled {
   padding-top: 6px;
   font-size: 0.9em;
   color: #aaa;
+}
+
+#allowBlock button {
+  width: 60px;
+  height: 22px;
 }
 
 button {
