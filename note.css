@@ -15,49 +15,62 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,300);
+
 body {
   font-family: sans-serif;
-  overflow: hidden;
-  margin: 2px;
+  margin: 0 0 2px 2px;
+  height: 125px;
 }
 
-#originalURL {
-  font-size: 13px;
-  padding: 4px 0 0 9px;
-  font-style: italic;
-  color: #555;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 280px;
-}
-
-#info {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-pack: center;
-  height: 117px;
-}
 #qr {
   float: left;
 }
-#notification {
+
+#info {
+  font-family: 'Oswald', sans-serif;
+  width: 173px;
+  height: 95px;
+  display: -webkit-box;
+  -webkit-box-orient: horizontal;
+  -webkit-box-pack: center;
+  -webkit-box-align: center;
   font-size: 20px;
 }
 
+#originalURL {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 200;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border-bottom: 1px solid #BBB;
+  background-color: #EEE;
+  padding-left: 3px;
+  width: 170px;
+  color: #444;
+}
+
+/* Cool hover effect */
+#info:hover, #info:hover #code {
+  font-size: 25px;
+}
+
 #link:active, #link:visited {
-  text-shadow: 0px 0px 5px #00FF00;
   color: blue;
 }
 
 #link {
-  font-size: 20px;
+  -webkit-transition: font-size 0.2s ease;
 }
 
 #code {
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
+  -webkit-transition: font-size 0.2s ease;
 }
-small {
-  font-size: 10px;
+
+#notification {
+  font-size: 20px;
 }

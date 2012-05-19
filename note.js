@@ -34,8 +34,7 @@ link.innerHTML = localStorage['UrlyBaseURL'].substring(7)
 originalURL.innerText = shorturl(original);
 notification.innerText = chrome.i18n.getMessage('NoticeCopied');
 // QR-Code image
-qr.title = chrome.i18n.getMessage('NoticeQRScan');
-qr.src = 'http://chart.googleapis.com/chart?chs=120x120&cht=qr&chld=Q|0&chl=' + escape(url);
+qr.src = 'http://chart.googleapis.com/chart?chs=125x125&cht=qr&chld=Q|0&chl=' + escape(url);
 // Close notification on click
 window.onclick = function () {window.close();}
 

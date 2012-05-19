@@ -18,6 +18,7 @@ localStorage['UrlyBaseURL'] = 'http://urly.fi/';
 var UrlyReserved = new RegExp(/info|static/);
 var UrlyInfoPage = new RegExp(/http:\/\/urly.fi\/info\/.*/);
 var infoTabs = [];
+var copyInput = document.getElementById('url');
 
 // Create context menus
 window.onload = function () {
@@ -191,10 +192,9 @@ function shortenURL(url, cb) {
 
 // COPY text to clipboard
 function copyToClipboard(text) {
-  var input = document.getElementById('url');
-  if(!input) {return;}
-  input.value = text;
-  input.select();
+  if(!copyInput) {return;}
+  copyInput.value = text;
+  copyInput.select();
   document.execCommand('copy', false, null);
 }
 
