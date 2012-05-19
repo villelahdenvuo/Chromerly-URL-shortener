@@ -22,11 +22,19 @@ var defaults = {
   showInfo: false
 };
 
+var canBlock = false;
+
 // On document ready
 $(function () {
 
   // Localize for foreign users
   localizePage();
+  
+  // Check extensions permissions
+  chrome.permissions.contains(
+    {permissions: ["webRequest", "webRequestBlocking"]},
+    function (result) { canBlock = !!result; }
+  );
 
   $('#hasTimeout').change(function () {
     if ($('#hasTimeout').is(':checked')) {
@@ -46,6 +54,19 @@ $(function () {
     }
   }).change();
 
+  $('#showInfo,label[for="showInfo"]').click(function () {
+    // Request permission to block requests
+    if (!canBlock) {
+      chrome.permissions.request(
+        {permissions: ["webRequest", "webRequestBlocking"]},
+        function(granted) {
+          console.log('granted', granted, canBlock);
+          canBlock = !!granted;
+        }
+      );
+    }
+  });
+  
   // Changing this will update the number
   $('#timeoutRange').change(function () {
     $('#timeout').val(this.valueAsNumber);
@@ -72,6 +93,10 @@ $(function () {
     .mousemove(updateTimeout)
     .keydown(updateTimeout);
 
+  // Bind the buttons
+  $('#saveButton').click(saveOptions);
+  $('#resetButton').click(resetOptions);
+    
   // Load options from localStorage
   restoreOptions();
 });
@@ -90,7 +115,7 @@ function restoreOptions() {
 function saveOptions() {
   localStorage['hasTimeout'] = $('#hasTimeout').prop('checked');
   localStorage['timeout'] = $('#timeout').val();
-  localStorage['showInfo'] = $('#showInfo').prop('checked')
+  localStorage['showInfo'] = $('#showInfo').prop('checked');
   showDone();
 }
 

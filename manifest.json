@@ -2,14 +2,17 @@
     "name": "__MSG_ExtensionName__",
     "description": "__MSG_ExtensionDesc__",
     "version": "2.0",
+    "manifest_version": 2,
     "homepage_url": "http://github.com/tuhoojabotti/Chromerly-URL-shortener",
-    "minimum_chrome_version": "5.0.316.0",
+    "minimum_chrome_version": "17",
     "icons": {
         "16": "graphics/16.png",
         "48": "graphics/48.png",
         "128": "graphics/128.png"
     },
-    "background_page": "background.html",
+    "background": {
+      "page": "background.html"
+    },
     "options_page": "options.html",
     "omnibox": {
         "keyword": "urly"
@@ -18,6 +21,7 @@
         "default_icon": "graphics/16.png",
         "default_title": "__MSG_UrlyShorten__"
     },
-    "permissions": ["http://*/", "tabs", "notifications", "contextMenus", "clipboardWrite", "webRequest", "webRequestBlocking"],
+    "permissions": ["*://*/", "tabs", "notifications", "contextMenus", "clipboardWrite"],
+    "optional_permissions": ["webRequest", "webRequestBlocking"],
     "default_locale": "en"
 }
