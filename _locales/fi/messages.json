@@ -1,6 +1,6 @@
 {
 "ExtensionName": {"message": "Chromerly URL-lyhentäjä"},
-"ExtensionDesc": {"message": "Chromerly on yksinkertainen url-lyhentäjä. Klikkaa vain kuvaketta lyhentääksesi nykyisen osoitteen tai käytä urly avainsanaa omni-lootassa lyhentääksesi mitä tahansa. Tämä on ensimmäinen laajennokseni. :)"},
+"ExtensionDesc": {"message": "Chromerly on yksinkertainen url-lyhentäjä."},
 
    "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Lyhennä osoite!"},
 "UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Prosessoidaan..."},
@@ -8,15 +8,25 @@
 
 "FailGeneral": {"description": "Notification text: fail",          "message": "Lyhentäminen epäonnistui. Olen kamalan pahoillani, yritä uudestaan myöhemmin!"},
   "FailLimit": {"description": "Notification text: limit reached", "message": "Lyhentäminen epäonnistui, olet täyttänyt kiintiösi!"},
- "FailFormat": {"description": "Notification text: bad format",    "message": "Lyhentäminen epäonnistui, tarkastuta näppäimistösi! :P"},
+ "FailFormat": {"description": "Notification text: bad format",    "message": "Lyhentäminen epäonnistui, tarkista syötteesi!"},
 
-"NoticeCopied": {"description": "Notification text: copied",   "message": "Osoite kopioitu leikepöydälle!"},
-"NoticeQRScan": {"description": "Notification text: QR title", "message": "Skannaa minut älypuhelimellasi!"},
+"NoticeCopied": {"description": "Notification text: copied",   "message": "Osoite kopioitu!"},
 
      "ContextPage": {"description": "Context text: page",        "message": "Lyhennä sivun osoite"},
-"ContextSelection": {"description": "Context text: selection",   "message": "Lyhennä valittu tekstiosoite"},
-     "ContextLink": {"description": "Context text: link",        "message": "Lyhennä valittu linkki"},
+"ContextSelection": {"description": "Context text: selection",   "message": "Lyhennä tekstiosoite"},
+     "ContextLink": {"description": "Context text: link",        "message": "Lyhennä linkki"},
     "ContextImage": {"description": "Context text: image",       "message": "Lyhennä kuvan osoite"},
     "ContextVideo": {"description": "Context text: html5 video", "message": "Lyhennä videon osoite"},
-    "ContextAudio": {"description": "Context text: html5 audio", "message": "Lyhennä äänen osoite"}
+    "ContextAudio": {"description": "Context text: html5 audio", "message": "Lyhennä äänen osoite"},
+    
+          "OptionsTitle": {"description": "h1 on options",    "message": "Asetukset Chromerly URL-lyhentäjälle"},
+        "OptionsTimeout": {"description": "label for range",  "message": "Ilmoituksen aikakatkaisu"},
+ "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; Ilmoitusta ei näytetä <b>ollenkaan</b>!"},
+           "OptionsInfo": {"description": "Preview URLs",     "message": "Esikatsele linkkejä"},
+        "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Linkkien avaamisen sijaan näytä tietosivu."},
+           "OptionsSave": {"description": "Save-button",      "message": "Tallenna"},
+          "OptionsReset": {"description": "Reset-button",     "message": "Palauta"},
+           "OptionsDone": {"description": "Done! notice",     "message": "Valmis!"},
+    "OptionsChromerlyBy": {"description": "Chromerly * name", "message": "by"},
+        "OptionsProject": {"description": "Link to project",  "message": "koodi"}
 }

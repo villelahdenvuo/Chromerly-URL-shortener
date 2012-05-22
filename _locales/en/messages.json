@@ -13,20 +13,20 @@
 "NoticeCopied": {"description": "Notification text: copied",   "message": "Address copied!"},
 
      "ContextPage": {"description": "Context text: page",        "message": "Shorten page url"},
-"ContextSelection": {"description": "Context text: selection",   "message": "Shorten selected text link"},
+"ContextSelection": {"description": "Context text: selection",   "message": "Shorten selected link"},
      "ContextLink": {"description": "Context text: link",        "message": "Shorten link"},
     "ContextImage": {"description": "Context text: image",       "message": "Shorten image url"},
     "ContextVideo": {"description": "Context text: html5 video", "message": "Shorten video url"},
     "ContextAudio": {"description": "Context text: html5 audio", "message": "Shorten audio url"},
 
-          "OptionsTitle": {"description": "h1 on options",   "message": "Options for Chromerly URL-shortener"},
-        "OptionsTimeout": {"description": "label for range", "message": "Notification timeout"},
- "OptionsTimeoutWarning": {"description": "a warning text",  "message": "&laquo; You won't see <b>any</b> notification!"},
-           "OptionsInfo": {"description": "Preview URLs",    "message": "Preview links"},
-        "OptionsInfoTip": {"description": "tooltip",         "message": "&laquo; Instead of opening shortened links, show info pages."},
-           "OptionsSave": {"description": "Save-button",     "message": "Save"},
-          "OptionsReset": {"description": "Reset-button",    "message": "Reset"},
-           "OptionsDone": {"description": "Done!",           "message": "Done!"},
-    "OptionsChromerlyBy": {"description": "Chromerly * name","message": "by"},
-        "OptionsProject": {"description": "Link to project", "message": "Github Page"}
+          "OptionsTitle": {"description": "h1 on options",    "message": "Options for Chromerly URL-shortener"},
+        "OptionsTimeout": {"description": "label for range",  "message": "Notification timeout"},
+ "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; You won't see <b>any</b> notification!"},
+           "OptionsInfo": {"description": "Preview URLs",     "message": "Preview links"},
+        "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Instead of opening shortened links, show info pages."},
+           "OptionsSave": {"description": "Save-button",      "message": "Save"},
+          "OptionsReset": {"description": "Reset-button",     "message": "Reset"},
+           "OptionsDone": {"description": "Done! notice",     "message": "Done!"},
+    "OptionsChromerlyBy": {"description": "Chromerly * name", "message": "by"},
+        "OptionsProject": {"description": "Link to project",  "message": "the code"}
 }

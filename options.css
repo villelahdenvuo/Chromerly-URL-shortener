@@ -103,7 +103,7 @@ label.disabled {
 }
 
 button {
-  width: 60px;
+  min-width: 60px;
   height: 30px;
 }
 #done {
