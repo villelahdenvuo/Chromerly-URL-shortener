@@ -23,14 +23,15 @@ Contributors
 -----------
 * tuhoojabotti (Ville Lahdenvuo) – Main developer
 * Pettis (Juha Petäjäjärvi) – [Urly](http://urly.fi/ "In Finnish") and it's api
-* jhh (Jaakko-Heikki Heusala) – Additional programming
+* jhh (Jaakko-Heikki Heusala) – Some help
 * mikeful (Mikko Niemikorpi) – Teh awsum README logo!
 * Crystal Project (Everaldo Coelho) – Processing and failure icons
 
-### Translations
+### Translators
 * tuhoojabotti (Ville Lahdenvuo) – English & Finnish
 * Hidden (Denes) – Hungarian
 * Mowmow (Moritz Köhler) – German
 * Lulu Latifa Leonita – Indonesian
 * [D]emon (Tomaz Zabel) – Slovenian
 * Jagdos (Kristian Jagd) – Danish
+* Grookie (Pavel Šigut) – Czech

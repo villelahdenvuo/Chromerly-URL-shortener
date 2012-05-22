@@ -1,0 +1,33 @@
+{
+"ExtensionName": {"message": "Chromerly URL-zkracovač"},
+"ExtensionDesc": {"message": "Chromerly je jednoduché, ale možnostmi nabité URL-zkracující rozšíření."},
+
+   "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Zkrátit url!"},
+"UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Pracuji..."},
+    "UrlyFailed": {"description": "Icon's tooltip: failed",     "message": "Chyba!"},
+
+"FailGeneral": {"description": "Notification text: fail",          "message": "Nepovedlo se zkrátit. Je mi to velice líto, zkuste to prosím později"},
+  "FailLimit": {"description": "Notification text: limit reached", "message": "Nepovedlo se zkrátit, váš limit zkracování je vyčerpán!"},
+ "FailFormat": {"description": "Notification text: bad format",    "message": "Nepovedlo se zkrátit, zkontrolujte váš vstup!"},
+
+"NoticeCopied": {"description": "Notification text: copied",   "message": "Adresa zkopírována!"},
+
+     "ContextPage": {"description": "Context text: page",        "message": "Zkrátit URL stránky"},
+"ContextSelection": {"description": "Context text: selection",   "message": "Zkrátit zvolený odkaz"},
+     "ContextLink": {"description": "Context text: link",        "message": "Zkrátit odkaz"},
+    "ContextImage": {"description": "Context text: image",       "message": "Zkrátit URL obrázku"},
+    "ContextVideo": {"description": "Context text: html5 video", "message": "Zkrátit URL videa"},
+    "ContextAudio": {"description": "Context text: html5 audio", "message": "Zkrátit URL zvuku"},
+
+          "OptionsTitle": {"description": "h1 on options",    "message": "Možnosti Chromerly URL-zkracovače"},
+        "OptionsTimeout": {"description": "label for range",  "message": "Čas do konce oznámení"},
+    "OptionsTimeoutUnit": {"description": "what unit it is",  "message": "sekund"},
+ "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; Neuvidíte <b>žádné</b> oznámení!"},
+           "OptionsInfo": {"description": "Preview URLs",     "message": "Ukázat odkazy"},
+        "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Místo otevření zkrácených odkazů ukázat info-stránky."},
+           "OptionsSave": {"description": "Save-button",      "message": "Uložit"},
+          "OptionsReset": {"description": "Reset-button",     "message": "Obnovit"},
+           "OptionsDone": {"description": "Done! notice",     "message": "Hotovo!"},
+    "OptionsChromerlyBy": {"description": "Chromerly * name", "message": "od"},
+        "OptionsProject": {"description": "Link to project",  "message": "programátor"}
+}
