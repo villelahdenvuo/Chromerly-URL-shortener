@@ -1,6 +1,6 @@
 {
 "ExtensionName": {"message": "Chromerly URL-shortener"},
-"ExtensionDesc": {"message": "Chromerly is a simple url-shortener extension, just click the icon to shorten current url or use the omnibox keyword urly to shorten what ever you wish. This is my first extension. :)"},
+"ExtensionDesc": {"message": "Chromerly is a simple yet featureful URL-shortener extension."},
 
    "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Shorten url!"},
 "UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Processing..."},
@@ -11,20 +11,19 @@
  "FailFormat": {"description": "Notification text: bad format",    "message": "Failed to shorten, check your input!"},
 
 "NoticeCopied": {"description": "Notification text: copied",   "message": "Address copied!"},
-"NoticeQRScan": {"description": "Notification text: QR title", "message": "Scan me with your smartphone!"},
 
      "ContextPage": {"description": "Context text: page",        "message": "Shorten page url"},
 "ContextSelection": {"description": "Context text: selection",   "message": "Shorten selected text link"},
-     "ContextLink": {"description": "Context text: link",        "message": "Shorten selected link"},
-    "ContextImage": {"description": "Context text: image",       "message": "Shorten selected image url"},
-    "ContextVideo": {"description": "Context text: html5 video", "message": "Shorten selected video url"},
-    "ContextAudio": {"description": "Context text: html5 audio", "message": "Shorten selected audio url"},
+     "ContextLink": {"description": "Context text: link",        "message": "Shorten link"},
+    "ContextImage": {"description": "Context text: image",       "message": "Shorten image url"},
+    "ContextVideo": {"description": "Context text: html5 video", "message": "Shorten video url"},
+    "ContextAudio": {"description": "Context text: html5 audio", "message": "Shorten audio url"},
 
           "OptionsTitle": {"description": "h1 on options",   "message": "Options for Chromerly URL-shortener"},
         "OptionsTimeout": {"description": "label for range", "message": "Notification timeout"},
- "OptionsTimeoutWarning": {"description": "a warning text",  "message": "You won't see notification <b>at all</b>!"},
+ "OptionsTimeoutWarning": {"description": "a warning text",  "message": "&laquo; You won't see <b>any</b> notification!"},
            "OptionsInfo": {"description": "Preview URLs",    "message": "Preview links"},
-        "OptionsInfoTip": {"description": "more info",       "message": "Instead of opening shortened links, show link info pages."},
+        "OptionsInfoTip": {"description": "tooltip",         "message": "&laquo; Instead of opening shortened links, show info pages."},
            "OptionsSave": {"description": "Save-button",     "message": "Save"},
           "OptionsReset": {"description": "Reset-button",    "message": "Reset"},
            "OptionsDone": {"description": "Done!",           "message": "Done!"},

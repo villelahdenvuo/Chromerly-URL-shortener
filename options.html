@@ -21,36 +21,41 @@
     <meta charset="utf-8" />
     <title i18n="ExtensionName"></title>
     <link rel="stylesheet" href="options.css" />
-    <script src="libs/jquery-1.7.1.min.js"></script>
+    <script src="libs/jquery-1.7.2.min.js"></script>
     <script src="options.js"></script>
   </head>
   <body>
     <header>
       <img src="graphics/48.png" width="48" height="48" />
-      <h1 i18n="OptionsTitle">Options</h1>
+      <h1 i18n="OptionsTitle"></h1>
     </header>
-    <!-- Options HTML -->
-    <div style="display: none;" id="timeoutWarning" i18n="OptionsTimeoutWarning"></div>
     <div id="options">
-      <input id="hasTimeout" type="checkbox" />
-      <label id="timeoutLabel" for="hasTimeout" i18n="OptionsTimeout" i18n_title="OptionsTimeoutTip"></label>
-      <input id="timeoutRange" type="range" min="0" max="60" />
-      <input id="timeout" type="number" min="0" />
-      <br />
-      <input id="showInfo" type="checkbox" />
-      <label id="infoLabel" for="showInfo" i18n="OptionsInfo" i18n_title="OptionsInfoTip"></label>
-      <span id="allowBlock"></span>
-      <br /><br />
+
+      <!-- Notification timeout -->
+      <label>
+        <input id="hasTimeout" type="checkbox" />
+        <span i18n="OptionsTimeout"></span>
+      </label> <input id="timeout" type="number" min="0" /> <span id="unit">seconds</span>
+      <span id="timeoutWarning" class="details" i18n="OptionsTimeoutWarning"></span><br />
+
+      <!-- Preview links -->
+      <label>
+        <input id="showInfo" type="checkbox" />
+        <span i18n="OptionsInfo"></span>
+      </label><span id="allowBlock"></span>
+      <span id="infoTip" class="details" i18n="OptionsInfoTip"></span><br /><br />
+
+      <!-- Action buttons -->
       <button id="saveButton" i18n="OptionsSave"></button>
       <button id="resetButton" i18n="OptionsReset"></button>
-      <span id="msg" style="opacity:0" i18n="OptionsDone"></span>
+      <span id="done" i18n="OptionsDone"></span>
+
     </div>
     <footer>
-      <a href="https://chrome.google.com/webstore/detail/ebfkcfgnlbfdnjfpoegigihcijkmnpee"
-      title="Chrome Web Store">Chromerly URL-shortener</a> <span i18n="OptionsChromerlyBy"></span>
-      Ville "<a href="http://tuhoojabotti.com">tuhoojabotti</a>"
-      Lahdenvuo &ndash; <a href="https://github.com/tuhoojabotti/Chromerly-URL-shortener">
-      <span i18n="OptionsProject"></span></a>
+      <a href="http://urly.fi/bu" i18n="ExtensionName"></a>
+      <span i18n="OptionsChromerlyBy"></span>
+      Ville "<a href="http://tuhoojabotti.com">tuhoojabotti</a>" Lahdenvuo &ndash;
+      <a href="http://urly.fi/as" i18n="OptionsProject"></a>
     </footer>
   </body>
 </html>

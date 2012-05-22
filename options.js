@@ -12,10 +12,9 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
-// Set defaults
+
 var defaults = {
   hasTimeout: false,
   timeout: 30,
@@ -24,94 +23,79 @@ var defaults = {
 
 var canBlock = false;
 
-// On document ready
 $(function () {
-
-  // Localize for foreign users
+  // Localize for foreign users.
   localizePage();
 
-  // Check extensions permissions
-  function checkPermissions(result) {
-    canBlock = !!result;
-    // Load options from localStorage
-    restoreOptions();
+  // Check for webRequest and webRequestBlocking permissions.
+  chrome.permissions.contains({permissions:["webRequest", "webRequestBlocking"]}, checkPermissions);
+});
 
-    function granted(granted) {
-      canBlock = !!granted;
-      if (canBlock) {
-        $('label[for="showInfo"]').css('text-decoration', 'none');
-        $('#requestPermission').remove();
-        chrome.extension.sendRequest(null, {msg: 'canBlock'});
-      }
-    }
+function checkPermissions(result) {
+  canBlock = !!result;
 
-    if (!canBlock) {
-      $('label[for="showInfo"]').css('text-decoration', 'line-through');
-      $('<button>')
-        .attr('id', 'requestPermission')
-        .text('Allow')
-        .appendTo('#allowBlock')
-        .click(function () {
-          chrome.permissions.request({permissions: ["webRequest", "webRequestBlocking"]}, granted);
-      })
-    } else {
+  // Permissions are checked, initialize.
+  restoreOptions();
+  initializeForm();
+
+  function granted(granted) {
+    canBlock = !!granted;
+    if (canBlock) {
+      $('#showInfo').parent().css('text-decoration', 'none');
+      $('#requestPermission').remove();
+      // Tell the background script that it can add a listener.
       chrome.extension.sendRequest(null, {msg: 'canBlock'});
     }
   }
-  chrome.permissions.contains({permissions: ["webRequest", "webRequestBlocking"]}, checkPermissions);
 
+  if (!canBlock) {
+    $('#showInfo').parent().css('text-decoration', 'line-through');
+    $('<button>')
+      .attr('id', 'requestPermission')
+      .text('Allow')
+      .appendTo('#allowBlock')
+      .click(function () {
+        chrome.permissions.request({permissions: ["webRequest", "webRequestBlocking"]}, granted);
+    });
+  } else {
+    chrome.extension.sendRequest(null, {msg: 'canBlock'});
+  }
+}
+
+function initializeForm () {
+  function updateTimeoutWarning() {
+    var warn = $('#timeout').val() < 1 && $('#hasTimeout').prop('checked');
+    $('#timeoutWarning').toggleClass('show', warn);
+  }
+
+  $('#timeout').change(updateTimeoutWarning);
   $('#hasTimeout').change(function () {
-    if ($('#hasTimeout').is(':checked')) {
-      $('#timeout,#timeoutRange').prop('disabled', false);
-      $('label[for="hasTimeout"]').removeClass('disabled');
-    } else {
-      $('#timeout,#timeoutRange').prop('disabled', true);
-      $('label[for="hasTimeout"]').addClass('disabled');
-    }
+    updateTimeoutWarning();
+    var checked = $(this).prop('checked');
+    $('#timeout').prop('disabled', !checked);
+    $(this).parent().toggleClass('disabled', !checked);
   }).change();
 
   $('#showInfo').change(function () {
-    if ($(this).is(':checked')) {
+    var $si = $(this);
+    if ($si.is(':checked')) {
+      // Do not allow enabling if we have no permission.
       if (canBlock) {
-        $('label[for="' + this.id + '"]').removeClass('disabled');
-      }else {
-        $('#showInfo').prop('checked', false);
+        $si.parent().removeClass('disabled');
+        $('#infoTip').addClass('show');
+      } else {
+        $si.prop('checked', false).parent().addClass('disabled');
       }
     } else {
-      $('label[for="' + this.id + '"]').addClass('disabled');
+      $si.parent().addClass('disabled');
+      $('#infoTip').removeClass('show');
     }
   }).change();
-
-  // Changing this will update the number
-  $('#timeoutRange').change(function () {
-    $('#timeout').val(this.valueAsNumber);
-    if ($('#timeout').val() < 1) {
-      $('#timeoutWarning').slideDown();
-    } else {
-      $('#timeoutWarning').slideUp();
-    }
-  });
-
-  // Also changing the number will update the slider
-  function updateTimeout() {
-    $('#timeoutRange').val(this.valueAsNumber);
-    if ($('#timeout').val() < 1) {
-      $('#timeoutWarning').slideDown();
-    } else {
-      $('#timeoutWarning').slideUp();
-    }
-  }
-
-  $('#timeout')
-    .change(updateTimeout)
-    .mousemove(updateTimeout)
-    .keydown(updateTimeout);
 
   // Bind the buttons
   $('#saveButton').click(saveOptions);
   $('#resetButton').click(resetOptions);
-
-});
+}
 
 // Restores options from localStorage
 function restoreOptions() {
@@ -144,10 +128,8 @@ function resetOptions() {
 }
 
 function showDone() {
-  $('#msg').css('opacity', 1).addClass('rot');
-  setTimeout(function () {
-    $('#msg').css('opacity', 0).removeClass('rot');
-  }, 1000);
+  $('#done').addClass('show');
+  setTimeout(function () { $('#done').removeClass('show'); }, 1000);
 }
 
 // Localizes page for foreign users

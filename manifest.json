@@ -10,6 +10,9 @@
         "48": "graphics/48.png",
         "128": "graphics/128.png"
     },
+    "web_accessible_resources": [
+      "graphics/stop.png"
+    ],
     "background": {
       "page": "background.html"
     },
