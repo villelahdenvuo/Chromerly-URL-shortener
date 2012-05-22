@@ -21,6 +21,7 @@
     
           "OptionsTitle": {"description": "h1 on options",    "message": "Asetukset Chromerly URL-lyhentäjälle"},
         "OptionsTimeout": {"description": "label for range",  "message": "Ilmoituksen aikakatkaisu"},
+    "OptionsTimeoutUnit": {"description": "what unit it is",  "message": "sekuntia"},
  "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; Ilmoitusta ei näytetä <b>ollenkaan</b>!"},
            "OptionsInfo": {"description": "Preview URLs",     "message": "Esikatsele linkkejä"},
         "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Linkkien avaamisen sijaan näytä tietosivu."},

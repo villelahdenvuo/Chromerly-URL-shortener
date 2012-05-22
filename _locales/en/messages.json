@@ -21,6 +21,7 @@
 
           "OptionsTitle": {"description": "h1 on options",    "message": "Options for Chromerly URL-shortener"},
         "OptionsTimeout": {"description": "label for range",  "message": "Notification timeout"},
+    "OptionsTimeoutUnit": {"description": "what unit it is",  "message": "seconds"},
  "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; You won't see <b>any</b> notification!"},
            "OptionsInfo": {"description": "Preview URLs",     "message": "Preview links"},
         "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Instead of opening shortened links, show info pages."},
