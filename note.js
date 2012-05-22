@@ -29,7 +29,7 @@ var originalURL = document.getElementById('originalURL'),
 // Create the link
 link.href = url;
 link.innerHTML = localStorage['UrlyBaseURL'].substring(7)
-    + '<spa id="code">' + code + '</span>';
+    + '<span id="code">' + code + '</span>';
 // Notification text
 originalURL.innerText = shorturl(original);
 notification.innerText = chrome.i18n.getMessage('NoticeCopied');
