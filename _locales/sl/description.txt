@@ -1,0 +1,11 @@
+Vsi sovražimo tiste dolge avtomatsko ustvarjene povezave, ki jih vidimo vsak dan. Zato sem naredil tale preprost vtičnik za enostavno krajšanje teh povezav in lajšanje deljenja stvari.
+
+Lastnosti:
+* Enostavna ikona s klikom na katero okrajšate povezavo trenutnega zavihka
+* Kontekstni meni za okrajšanje povezav na stran, sliko, izbrano besedilo, video ali celo avdio povezave
+* Ključna beseda urly v omnibox-u za okrajšanje poljubne povezave
+* NOVO: Sedaj lahko blokirate okrajšane povezave in se preusmerite na stran z informacijami!
+
+Če imate kakršnekoli težave s tem vtičnikom ali pa bi radi predlagali nove funkcionalnosti ustvarite temo na Github strani!
+
+Če vas podrobneje zanima kako ta vtičnik deluje, si oglejte izvorno kodo! To je odprtokodni projekt, sledite povezavi za podporo na Github strani.

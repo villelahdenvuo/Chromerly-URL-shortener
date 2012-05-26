@@ -1,6 +1,6 @@
 {
 "ExtensionName": {"message": "Chromerly URL-shortener"},
-"ExtensionDesc": {"message": "Chromerly je enostaven vtičnik za skrajševanje URL naslovov, samo kliknite na ikono za skrajšanje trenutnega naslova ali pa uporabite omnibox ključno besedo urly za krajšanje vsebine po želji. To je moj prvi vtičnik. :)"},
+"ExtensionDesc": {"message": "Chromerly je enostaven, vendar zmogljiv vtičnik za skrajševanje URL naslovov."},
 
    "UrlyShorten": {"description": "Icon's tooltip: ready",      "message": "Skrajšaj url!"},
 "UrlyProcessing": {"description": "Icon's tooltip: processing", "message": "Obdelujem..."},
@@ -11,12 +11,23 @@
  "FailFormat": {"description": "Notification text: bad format",    "message": "Krajšanje neuspešno, preverite vaš vnos!"},
 
 "NoticeCopied": {"description": "Notification text: copied",   "message": "Naslov kopiran v odložišče!"},
-"NoticeQRScan": {"description": "Notification text: QR title", "message": "Poskenirajte me z vašim pametnim telefonom!"},
 
      "ContextPage": {"description": "Context text: page",        "message": "Skrajšajte url naslov"},
 "ContextSelection": {"description": "Context text: selection",   "message": "Skrajšajte izbrano tekstovno povezavo"},
      "ContextLink": {"description": "Context text: link",        "message": "Skrajšajte izbrano povezavo"},
     "ContextImage": {"description": "Context text: image",       "message": "Skrajšajte izbrani url naslov do slike"},
     "ContextVideo": {"description": "Context text: html5 video", "message": "Skrajšajte izbrani url naslov do video posnetka"},
-    "ContextAudio": {"description": "Context text: html5 audio", "message": "Skrajšajte izbrani url naslov do zvočnega posnetka"}
+    "ContextAudio": {"description": "Context text: html5 audio", "message": "Skrajšajte izbrani url naslov do zvočnega posnetka"},
+    
+          "OptionsTitle": {"description": "h1 on options",    "message": "Opcije za Chromerly URL-okrajševalec"},
+        "OptionsTimeout": {"description": "label for range",  "message": "Trajanje obvestila"},
+    "OptionsTimeoutUnit": {"description": "what unit it is",  "message": "sekund"},
+ "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; Videli ne boste <b>nobenih</b> obvestil!"},
+           "OptionsInfo": {"description": "Preview URLs",     "message": "Predogled povezav"},
+        "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Namesto odpiranja povezav odpri stran z informacijami"},
+           "OptionsSave": {"description": "Save-button",      "message": "Shrani"},
+          "OptionsReset": {"description": "Reset-button",     "message": "Ponastavi"},
+           "OptionsDone": {"description": "Done! notice",     "message": "Opravljeno!"},
+    "OptionsChromerlyBy": {"description": "Chromerly * name", "message": "by"},
+        "OptionsProject": {"description": "Link to project",  "message": "izvorna koda"}
 }

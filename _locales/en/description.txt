@@ -1,0 +1,11 @@
+We all hate those long auto-generated links that we see every day. So I made this simple extension to easily shorten those links and making sharing things a breeze.
+
+Features:
+* Simple icon to click to shorten tab's url
+* Context menu to shorten page, image, link, selection, video or even audio urls
+* Urly keyword in the omnibox to shorten any url you want
+* NEW: You can now block shortened links and redirect to info page instead!
+
+If you have a problem with this extension or you would like to suggest a new feature please create an issue on the Github page!
+
+If you want to know exactly how this extension works, take a look at the source code! This is an open source project, see the Support link for the Github page.

@@ -1,0 +1,11 @@
+Všichni nesnášíme ty dlouhé, automaticky generované odkazy, které vidíme každý den. Proto jsem vytvořil toto jednoduché rozšíření, snadno zkracující tyto odkazy a dělající sdílení věcí hračkou.
+
+Vlastnosti:
+* Jednoduchá ikona ke zkrácení URL záložky
+* Kontextové menu ke zkrácení URL stránky, obrázku, odkazu, výběru, videa a dokonce i zvuku
+* Klíčové slovo Urly v omniboxu ke zkrácení jakéhokoliv URL chcete
+* NOVÉ: Nyní můžete blokovat zkrácené odkazy a místo toho je přesměrovat do info-stránky
+
+Pokud máte problém s tímto rozšířením nebo byste rádi navrhli něco nového, vytvořte, prosím, článek na stránce Githubu!
+
+Pokud chcete přesně vědět, jak toto rozšíření pracuje, podívejte se na zdrojový kód! Toto je open-source projekt, viz odkaz Nahlásit chybu (odkaz na stránku Githubu).

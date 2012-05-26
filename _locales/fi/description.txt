@@ -1,0 +1,11 @@
+Me kaikki vihaamme pitkiä automaattisesti generoituja linkkejä, joita näemme joka päivä. Päätin sitten tehdä tämän simppelin laajennuksen, jotta linkkien lyhentäminen ja jakaminen olisi helppoa.
+
+Ominaisuudet:
+* Yksinkertainen ikoni, jolla voi lyhentää välilehden osoitteen
+* Kontekstivalikko, jolla voi lyhentää sivun, kuvan, linkin, valinnan, videon tai jopa äänen osoitteen
+* Urly -avainsana omni-lootassa, jolla voit lyhentää minkä osoitteen tahansa
+* UUTTA: Mahdollisuus estää lyhennettyjen linkkien avaaminen ja ohjata selain linkin tietosivulle!
+
+Jos havaitset ongelmia laajennuksen kanssa tai haluaisit ehdottaa uutta ominaisuutta, ole hyvä ja luo tiketti Github -sivulle.
+
+Jos haluat tietää tarkalleen, kuinka tämä laajennus toimii, katso lähdekoodeista! Tämä on avoimen lähdekoodin projekti, paina Tuki -linkkiä päästäksesi Github -sivulle.
