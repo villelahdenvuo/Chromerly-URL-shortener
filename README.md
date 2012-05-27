@@ -13,7 +13,7 @@ Features
 * Sleek notification with QR-code for us smartphone owners
 * Context menu integration for images, videos, audio, links and selected text!
 * **NEW:** Block Urly links to preview where they redirect before opening them!
-* Translated to English, Hungarian, German and Finnish (Feel free to send me your translation!)
+* Translated to many languages, see below!
 
 Feature requests
 ----------------
