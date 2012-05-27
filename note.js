@@ -18,7 +18,7 @@
 // Retrieve variables from localStorage
 var code = localStorage['code'],
     original = localStorage['original'],
-    base = localStorage['UrlyBaseURL'],
+    base = 'http://urly.fi/',
     url = base + code;
 // Get HTML elements to modify
 var originalURL = document.getElementById('originalURL'),
@@ -28,7 +28,7 @@ var originalURL = document.getElementById('originalURL'),
 
 // Create the link
 link.href = url;
-link.innerHTML = localStorage['UrlyBaseURL'].substring(7)
+link.innerHTML = base.substring(7)
     + '<span id="code">' + code + '</span>';
 // Notification text
 originalURL.innerText = shorturl(original);

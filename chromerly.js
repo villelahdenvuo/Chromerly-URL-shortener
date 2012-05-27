@@ -14,39 +14,11 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
+var copyInput = document.getElementById('url');
+window.addEventListener('load', initialize);
 
-window.onload = function () {
-
-  // Init some state variables and such.
-  localStorage['UrlyBaseURL'] = 'http://urly.fi/';
-  var UrlyReserved = new RegExp(/info|static/)
-    , infoTabs = []
-    , blocking = false;
-
-  // Initialize context menus
-  function onContext(url, tab) {
-    setIcon('loading', 'UrlyProcessing', tab);
-    shortenURL(url, function (err, code, original) {
-      if (!err) {
-        setIcon('16', 'UrlyShorten', tab);
-        copyToClipboard(localStorage['UrlyBaseURL'] + code);
-        createNotification(code, original);
-      } else {createErrorNotification(code, tab);}
-    });
-  }
-
-  function createMenu(name, context, source) {
-    chrome.contextMenus.create({
-      title: chrome.i18n.getMessage(name), contexts: [context],
-      onclick: function (i, tab) { onContext(source(i), tab); }});
-  }
-
-  createMenu('ContextSelection', 'selection', function (i) { return i.selectionText; });
-  createMenu('ContextPage',      'page',      function (i) { return i.pageUrl; });
-  createMenu('ContextLink',      'link',      function (i) { return i.linkUrl; });
-  createMenu('ContextImage',     'image',     function (i) { return i.srcUrl; });
-  createMenu('ContextVideo',     'video',     function (i) { return i.srcUrl; });
-  createMenu('ContextAudio',     'audio',     function (i) { return i.srcUrl; });
+function initialize() {
+  var UrlyReserved = new RegExp(/info|static/), infoTabs = [], blocking = false;
 
   // Listen for tab updates (to show pageAction icon in the omnibox).
   chrome.tabs.onUpdated.addListener(function(tabId, info) {
@@ -54,16 +26,27 @@ window.onload = function () {
     if (info.url && !info.url.indexOf('http://urly.fi/info/')) {infoTabs.push(tabId)};
   });
 
+  // A simple wrapper to shorten, notify and update icon.
+  function shortenWrapper(url, tab) {
+    setIcon('loading', 'UrlyProcessing', tab);
+    shortenURL(url, function (err, code, original) {
+      if (err) { createErrorNotification(code, tab); return; }
+      setIcon('16', 'UrlyShorten', tab);
+      copyToClipboard('http://urly.fi/' + code);
+      createNotification(code, original);
+    });
+  }
+
   // Show info pages instead of redirecting, if the use so desires.
   function onUrlyRequest(data) {
+    // Don't redirect these
     if (localStorage['showInfo'] == 'false'
-     || localStorage['UrlyBaseURL'] == data.url
-     || UrlyReserved.test(data.url)) return; // Nope.
-
-    if(infoTabs.indexOf(data.tabId) != -1) {
+     || 'http://urly.fi/' == data.url
+     || UrlyReserved.test(data.url)) { return; } // Nope.
+    // Don't redirect if already on an info page.
+    if (infoTabs.indexOf(data.tabId) != -1) {
       infoTabs.splice(infoTabs.indexOf(data.tabId), 1); return;
     }
-
     return {redirectUrl: 'http:/urly.fi/info/' + data.url.substring(15)};
   }
 
@@ -74,36 +57,39 @@ window.onload = function () {
         {urls: ["http://urly.fi/*"], types: ["main_frame"]}, ["blocking"]);
     }
   }
-
   chrome.permissions.contains({permissions: ["webRequest", "webRequestBlocking"]}, permission);
 
   // Listen to other parts of the extension, maybe they have something interesting to say.
   chrome.extension.onRequest.addListener(function (req) {
     if (req.msg == 'canBlock' && !blocking) {
+      // Got message from the options page, that we have permission! Check again.
       chrome.permissions.contains({permissions: ["webRequest", "webRequestBlocking"]}, permission);
     }
   });
 
+  ///////////////////////// USER INTERACTION /////////////////////////
+  
+  // Initialize context menus
+  function createMenu(name, context, source) {
+    chrome.contextMenus.create({
+      title: chrome.i18n.getMessage(name), contexts: [context],
+      onclick: function (i, tab) { shortenWrapper(source(i), tab); }});
+  }
+  createMenu('ContextSelection', 'selection', function (i) { return i.selectionText; });
+  createMenu('ContextPage',      'page',      function (i) { return i.pageUrl; });
+  createMenu('ContextLink',      'link',      function (i) { return i.linkUrl; });
+  createMenu('ContextImage',     'image',     function (i) { return i.srcUrl; });
+  createMenu('ContextVideo',     'video',     function (i) { return i.srcUrl; });
+  createMenu('ContextAudio',     'audio',     function (i) { return i.srcUrl; });
+
   // Listen for pageAction icon clicks
   chrome.pageAction.onClicked.addListener(function (tab) {
-    setIcon('loading', 'UrlyProcessing', tab);
-    shortenURL(tab.url, function (err, code, original) {
-      if (!err) {
-        setIcon('16', 'UrlyShorten', tab);
-        copyToClipboard(localStorage['UrlyBaseURL'] + code);
-        createNotification(code, original);
-      } else {createErrorNotification(code, tab);}
-    });
+    shortenWrapper(tab.url, tab);
   });
 
   // Listen for omnibox keyword 'urly'.
   chrome.omnibox.onInputEntered.addListener(function (text) {
-    shortenURL(text, function (err, code, original) {
-      if (!err) {
-        copyToClipboard(localStorage['UrlyBaseURL'] + code);
-        createNotification(code, original);
-      } else {createErrorNotification(code);}
-    });
+    chrome.tabs.getCurrent(function (tab) { shortenWrapper(text, tab); });
   });
 
 }
@@ -111,41 +97,39 @@ window.onload = function () {
 ///////////////////////// UTILITIES /////////////////////////
 
 function createNotification (code, original) {
-  localStorage['code'] = code;
   localStorage['original'] = original;
+  localStorage['code'] = code;
   var notification = webkitNotifications.createHTMLNotification('note.html');
 
   if (localStorage['hasTimeout'] === 'true') {
     var timeout = parseInt(localStorage['timeout']);
-    if (timeout === 0) {return;}
-
-    setTimeout(function () {
-      notification.cancel();
-    }, timeout * 1000);
+    if (!timeout) { return; }
+    setTimeout(function () { notification.cancel(); }, timeout * 1000);
   }
   notification.show();
 }
 
 function createErrorNotification(msg, tab) {
-  if (tab) {setIcon('stop', 'UrlyFailed', tab);}
+  setIcon('stop', 'UrlyFailed', tab);
   var notification = webkitNotifications.createNotification('graphics/stop.png',
                                            chrome.i18n.getMessage('UrlyFailed'),
                                            chrome.i18n.getMessage(msg));
   setTimeout(function () {
-    if (tab) {setIcon('16', 'UrlyShorten', tab);}
+    setIcon('16', 'UrlyShorten', tab);
     notification.cancel();
   }, 10000);
   notification.show();
 }
 
 function setIcon(i, t, tab) {
+  if (!tab) { return; }
   chrome.pageAction.setIcon({path: 'graphics/' + i + '.png', tabId: tab.id});
   chrome.pageAction.setTitle({title: chrome.i18n.getMessage(t), tabId: tab.id});
 };
 
 function shortenURL(url, cb) {
-  var xhr = new XMLHttpRequest()
-    , urly = 'http://urly.fi/api/shorten/?url=' + escape(url);
+  var xhr = new XMLHttpRequest(),
+      urly = 'http://urly.fi/api/shorten/?url=' + escape(url);
   xhr.onreadystatechange = function() {
     if (xhr.readyState != 4) {return;}
     if        (xhr.status == 200) {cb(false, xhr.responseText, url);
@@ -158,8 +142,6 @@ function shortenURL(url, cb) {
 }
 
 function copyToClipboard(text) {
-  var copyInput = document.getElementById('url');
-  if(!copyInput) {return;}
   copyInput.value = text;
   copyInput.select();
   document.execCommand('copy', false, null);
