@@ -17,7 +17,7 @@
      "ContextLink": {"description": "teks Konteks: link",        "message": "Mempersingkat link yang dipilih"},
     "ContextImage": {"description": "teks Konteks: gambar",      "message": "Mempersingkat url gambar yang dipilih"},
     "ContextVideo": {"description": "teks Konteks: video HTML5", "message": "Mempersingkat url video yang dipilih"},
-    "ContextAudio": {"description": "teks Konteks: audio HTML5", "message": "Mempersingkat url audio yang dipilih"}
+    "ContextAudio": {"description": "teks Konteks: audio HTML5", "message": "Mempersingkat url audio yang dipilih"},
 
           "OptionsTitle": {"description": "h1 dalam pilihan",    "message": "Pilihan untuk Chromerly memperpendek-URL"},
         "OptionsTimeout": {"description": "label untuk hasil",   "message": "waktu habis untuk pemberitahuan "},
