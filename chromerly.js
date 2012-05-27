@@ -35,17 +35,18 @@ window.onload = function () {
     });
   }
 
-  function createMenu(name, context, action) {
-    chrome.contextMenus.create({title: chrome.i18n.getMessage(name),
-                                contexts: [context], onclick: action});
+  function createMenu(name, context, source) {
+    chrome.contextMenus.create({
+      title: chrome.i18n.getMessage(name), contexts: [context],
+      onclick: function (i, tab) { onContext(source(i), tab); }});
   }
 
-  createMenu('ContextSelection', 'selection', function (i, tab) { onContext(i.selectionText, tab); });
-  createMenu('ContextPage',      'page',      function (i, tab) { onContext(i.pageUrl, tab); });
-  createMenu('ContextLink',      'link',      function (i, tab) { onContext(i.linkUrl, tab); });
-  createMenu('ContextImage',     'image',     function (i, tab) { onContext(i.srcUrl, tab); });
-  createMenu('ContextVideo',     'video',     function (i, tab) { onContext(i.srcUrl, tab); });
-  createMenu('ContextAudio',     'audio',     function (i, tab) { onContext(i.srcUrl, tab); });
+  createMenu('ContextSelection', 'selection', function (i) { return i.selectionText; });
+  createMenu('ContextPage',      'page',      function (i) { return i.pageUrl; });
+  createMenu('ContextLink',      'link',      function (i) { return i.linkUrl; });
+  createMenu('ContextImage',     'image',     function (i) { return i.srcUrl; });
+  createMenu('ContextVideo',     'video',     function (i) { return i.srcUrl; });
+  createMenu('ContextAudio',     'audio',     function (i) { return i.srcUrl; });
 
   // Listen for tab updates (to show pageAction icon in the omnibox).
   chrome.tabs.onUpdated.addListener(function(tabId, info) {
