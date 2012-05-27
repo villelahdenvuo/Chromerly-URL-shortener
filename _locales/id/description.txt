@@ -1,0 +1,11 @@
+Anda tentu membenci auto link yang panjang yang kita lihat setiap hari. Jadi, saya buat ekstensi sederhana ini untuk mempersingkat link panjang itu dengan mudah dan dapat berbagi sesuatu dengan cepat.
+
+Fitur:
+* Ikon simple yang di klik untuk mempersingkat tab url
+* Konteks menu untuk mempersingkat url halaman, foto, link, seleksi, video atau audio.
+* Kata kunci Urly dalam omnibox untuk memperpendek url apapun yang Anda mau
+* BARU : Anda sekarang bisa mem-blok link yang diperpendek dan direksikan langsung ke halaman info!
+
+Jika Anda ada masalah dengan kerja ekstensi ini, atau Anda ingin menyarankan fitur baru, Anda dapat membuatnya di halaman Github!
+
+Jika Anda ingin tahu bagaimana kerja ekstensi ini, lihat kode sumbernya! Ini adalah proyek dengan sumber terbuka, lihat link Pendukung untuk halaman Github.

@@ -1,22 +1,33 @@
 {
-"ExtensionName": {"message": "Chromerly URL-memperpendek"},
-"ExtensionDesc": {"message": "Chromerly adalah ekstensi url-memperpendek sederhana, hanya klik ikon untuk memperpendek url saat ini atau menggunakan kata kunci omnibox urly untuk mempersingkat apa yang pernah anda inginkan Ini adalah ekstensi pertama saya:..)"} ,
+"ExtensionName": {"message": "Chromerly memperpendek-URL"},
+"ExtensionDesc": {"message": "Chromerly adalah ekstensi memperpendek-url sederhana dan istimewa :..)"} ,
 
    "UrlyShorten": {"description": "tooltip Icon s: siap",       "message": "! Mempersingkat url"},
 "UrlyProcessing": {"description": "tooltip Icon s: pengolahan", "message": "Pengolahan ..."},
     "UrlyFailed": {"description": "tooltip Icon s: gagal",      "message": "! Gagal"},
 
-"FailGeneral": {"description": "teks Pemberitahuan: gagal",             "message": "Gagal untuk mempersingkat Aku minta maaf, coba lagi nanti.!"},
-  "FailLimit": {"description": "teks Pemberitahuan: batas mencapai",    "message": "Gagal untuk mempersingkat, memperpendek kuota Anda habis!"},
+"FailGeneral": {"description": "teks Pemberitahuan: gagal",             "message": "Gagal untuk mempersingkat. Kami minta maaf, coba lagi nanti.!"},
+  "FailLimit": {"description": "teks Pemberitahuan: mencapai batas",    "message": "Gagal untuk mempersingkat, kuota memperpendek Anda habis!"},
  "FailFormat": {"description": "teks Pemberitahuan: format yang buruk", "message": "! Gagal untuk mempersingkat, periksa input Anda"},
 
-"NoticeCopied": {"description": "teks Pemberitahuan: disalin",  "message": "! Alamat disalin ke clipboard"},
-"NoticeQRScan": {"description": "teks Pemberitahuan: judul QR", "message": "! Pindai saya dengan smartphone"},
+"NoticeCopied": {"description": "teks Pemberitahuan: disalin",  "message": "! Alamat disalin"},
 
-     "ContextPage": {"description": "teks Konteks: halaman",     "message": "Mempersingkat url halaman"},
-"ContextSelection": {"description": "teks Konteks: seleksi",     "message": "Mempersingkat link teks yang dipilih"},
+     "ContextPage": {"description": "teks Konteks: halaman",     "message": "Mempersingkat halaman url"},
+"ContextSelection": {"description": "teks Konteks: pilihan",     "message": "Mempersingkat link teks yang dipilih"},
      "ContextLink": {"description": "teks Konteks: link",        "message": "Mempersingkat link yang dipilih"},
     "ContextImage": {"description": "teks Konteks: gambar",      "message": "Mempersingkat url gambar yang dipilih"},
     "ContextVideo": {"description": "teks Konteks: video HTML5", "message": "Mempersingkat url video yang dipilih"},
     "ContextAudio": {"description": "teks Konteks: audio HTML5", "message": "Mempersingkat url audio yang dipilih"}
+
+          "OptionsTitle": {"description": "h1 dalam pilihan",    "message": "Pilihan untuk Chromerly memperpendek-URL"},
+        "OptionsTimeout": {"description": "label untuk hasil",   "message": "waktu habis untuk pemberitahuan "},
+    "OptionsTimeoutUnit": {"description": "unit apa ini",        "message": "kedua"},
+ "OptionsTimeoutWarning": {"description": "teks peringatan",     "message": "&laquo; Anda tidak akan melihat pemberitahuan <b>apapun</b> !"},
+           "OptionsInfo": {"description": "Memperlihatkan URLs", "message": "Memperlihatkan links"},
+        "OptionsInfoTip": {"description": "info teks",           "message": "&laquo; Daripada membuka link yang diperpendek, tunjukkan halaman info."},
+           "OptionsSave": {"description": "tombol-simpan",       "message": "Simpan"},
+          "OptionsReset": {"description": "tombol reset",        "message": "Reset"},
+           "OptionsDone": {"description": "Selesai! lihat",      "message": "selesai!"},
+    "OptionsChromerlyBy": {"description": "Chromerly * nama",    "message": "oleh"},
+        "OptionsProject": {"description": "Link untuk proyek",   "message": "kode"}
 }
