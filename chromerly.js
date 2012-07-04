@@ -1,5 +1,5 @@
 /*  Chromerly is a Chrome Extension to utilize the Finnish urly.fi.
-    Copyright (C) 2011  Ville 'tuhoojabotti' Lahdenvuo
+    Copyright (C) 2011-2012  Ville 'tuhoojabotti' Lahdenvuo
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -14,7 +14,6 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
-var copyInput = document.getElementById('url');
 window.addEventListener('load', initialize);
 
 function initialize() {
@@ -39,25 +38,25 @@ function initialize() {
 
   // Show info pages instead of redirecting, if the use so desires.
   function onUrlyRequest(data) {
-    // Don't redirect these
     if (localStorage['showInfo'] == 'false'
      || 'http://urly.fi/' == data.url
-     || UrlyReserved.test(data.url)) { return; } // Nope.
-    // Don't redirect if already on an info page.
-    if (infoTabs.indexOf(data.tabId) != -1) {
+     || UrlyReserved.test(data.url)) { return; }  // Don't redirect these.
+    if (infoTabs.indexOf(data.tabId) != -1) {     // Or if already on an info page.
       infoTabs.splice(infoTabs.indexOf(data.tabId), 1); return;
     }
-    return {redirectUrl: 'http:/urly.fi/info/' + data.url.substring(15)};
+    localStorage['infoUrl'] = data.url;
+    return {redirectUrl: chrome.extension.getURL("info.html")};
+    //return {cancel: true};
   }
 
   function permission(has) {
     if (has) {
       blocking = true;
       chrome.webRequest.onBeforeRequest.addListener(onUrlyRequest,
-        {urls: ["http://urly.fi/*"], types: ["main_frame"]}, ["blocking"]);
+        {urls: ['http://urly.fi/*'], types: ['main_frame']}, ['blocking']);
     }
   }
-  chrome.permissions.contains({permissions: ["webRequest", "webRequestBlocking"]}, permission);
+  chrome.permissions.contains({permissions: ['webRequest', 'webRequestBlocking']}, permission);
 
   // Listen to other parts of the extension, maybe they have something interesting to say.
   chrome.extension.onRequest.addListener(function (req) {
@@ -68,7 +67,7 @@ function initialize() {
   });
 
   ///////////////////////// USER INTERACTION /////////////////////////
-  
+
   // Initialize context menus
   function createMenu(name, context, source) {
     chrome.contextMenus.create({
@@ -91,58 +90,4 @@ function initialize() {
   chrome.omnibox.onInputEntered.addListener(function (text) {
     chrome.tabs.getCurrent(function (tab) { shortenWrapper(text, tab); });
   });
-
-}
-
-///////////////////////// UTILITIES /////////////////////////
-
-function createNotification (code, original) {
-  localStorage['original'] = original;
-  localStorage['code'] = code;
-  var notification = webkitNotifications.createHTMLNotification('note.html');
-
-  if (localStorage['hasTimeout'] === 'true') {
-    var timeout = parseInt(localStorage['timeout']);
-    if (!timeout) { return; }
-    setTimeout(function () { notification.cancel(); }, timeout * 1000);
-  }
-  notification.show();
-}
-
-function createErrorNotification(msg, tab) {
-  setIcon('stop', 'UrlyFailed', tab);
-  var notification = webkitNotifications.createNotification('graphics/stop.png',
-                                           chrome.i18n.getMessage('UrlyFailed'),
-                                           chrome.i18n.getMessage(msg));
-  setTimeout(function () {
-    setIcon('16', 'UrlyShorten', tab);
-    notification.cancel();
-  }, 10000);
-  notification.show();
-}
-
-function setIcon(i, t, tab) {
-  if (!tab) { return; }
-  chrome.pageAction.setIcon({path: 'graphics/' + i + '.png', tabId: tab.id});
-  chrome.pageAction.setTitle({title: chrome.i18n.getMessage(t), tabId: tab.id});
-};
-
-function shortenURL(url, cb) {
-  var xhr = new XMLHttpRequest(),
-      urly = 'http://urly.fi/api/shorten/?url=' + escape(url);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState != 4) {return;}
-    if        (xhr.status == 200) {cb(false, xhr.responseText, url);
-    } else if (xhr.status == 403) {cb(true, 'FailFormat');
-    } else if (xhr.status == 409) {cb(true, 'FailLimit');
-    } else                        {cb(true, 'FailGeneral');}
-  }
-  xhr.open('GET', urly, true);
-  xhr.send();
-}
-
-function copyToClipboard(text) {
-  copyInput.value = text;
-  copyInput.select();
-  document.execCommand('copy', false, null);
 }

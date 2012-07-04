@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+    Chromerly is a Chrome Extension to utilize the Finnish urly.fi.
+    Copyright (C) 2011-2012  Ville 'tuhoojabotti' Lahdenvuo
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title i18n="ExtensionName"></title>
+    <link rel="stylesheet" href="info.css" />
+    <script src="libs/jquery-1.7.2.min.js"></script>
+    <script src="info.js"></script>
+  </head>
+  <body>
+    <header>
+      <img src="graphics/48.png" width="48" height="48" />
+      <h1><span i18n="InfoTitle"></span> <span id="code"></span></h1>
+    </header>
+    <div id="loading">
+      <h2 i18n="InfoLoading">Looking up the URL...</h2>
+    </div>
+    <div id="info">
+      <div id="preview">
+        <a id="thumblink"><img id="thumb" width="200" height="150"/></a>
+        <div id="text">
+          <span i18n="InfoRedirectsTo">Redirects to</span>
+          <div id="redirect"><a href="#"></a></div>
+          <span i18n="InfoVisits">Number of visits</span> <span id="nuses"></span><br />
+          <span i18n="InfoCreated">Created</span> <span id="created"></span><br />
+          <span i18n="InfoUrlTitle" style="display:none;">Title</span>
+          <div id="title"></div>
+      </div>
+      </div>
+    </div>
+    <div id="fail">
+      <h2 i18n="InfoFail">Could not find info!</h2>
+    </div>
+    <footer>
+      <a href="http://urly.fi/bu" i18n="ExtensionName"></a>
+      <span i18n="OptionsChromerlyBy"></span>
+      Ville "<a href="http://tuhoojabotti.com">tuhoojabotti</a>" Lahdenvuo &ndash;
+      <a href="http://urly.fi/as" i18n="OptionsProject"></a>
+    </footer>
+  </body>
+</html>

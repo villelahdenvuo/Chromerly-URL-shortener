@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<!--Chromerly is a Chrome Extension to utilize the Finnish urly.fi.
+<!--
+    Chromerly is a Chrome Extension to utilize the Finnish urly.fi.
     Copyright (C) 2011-2012  Ville 'tuhoojabotti' Lahdenvuo
 
     This program is free software: you can redistribute it and/or modify
@@ -14,9 +15,21 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-Supposedly valid HTML5 -->
-<head><title></title></head>
-<input type="text" id="url"/>
-<script src="shorten.js"></script>
-<script src="chromerly.js"></script>
+-->
+<html>
+  <head>
+    <base target="_blank" />
+    <link rel="stylesheet" href="intent.css" />
+    <script src="shorten.js"></script>
+    <script src="intent.js"></script>
+  </head>
+  <body>
+    <input type="text" id="url" style="display:none;"/>
+    <img id="qr" src="graphics/qr.png" alt="QR-Code" width="125" height="125" />
+    <div id="originalURL"></div>
+    <div id="info">
+      <a href="#" id="link">...</a><br />
+      <span id="notification"></span>
+    </div>
+  </body>
+</html>

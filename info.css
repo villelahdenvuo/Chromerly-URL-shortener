@@ -1,0 +1,124 @@
+/*  Chromerly is a Chrome Extension to utilize the Finnish urly.fi.
+    Copyright (C) 2011-2012  Ville 'tuhoojabotti' Lahdenvuo
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+body {
+  width: 800px;
+  margin: 20px auto;
+  font-family: sans-serif;
+  text-align: center;
+  position: relative;
+}
+header {
+  margin: 1em 0 2em 0;
+}
+header img {
+  margin-right: 10px;
+}
+h1 {
+  display: inline;
+  font-family: sans-serif;
+  text-align: center;
+  vertical-align: 0.4em;
+}
+
+h1:hover #code {
+  -webkit-transform: skew(-10deg);
+}
+
+h1 #code {
+  display: inline-block;
+  font-size: 40px;
+  font-weight: bold;
+  -webkit-transition: -webkit-transform 0.2s ease;
+  color: blue;
+}
+
+#info {
+  display: none;
+  text-align: left;
+  position: relative;
+}
+
+#loading {
+  top: 115px;
+  position: absolute;
+  width: 100%;
+  font-size: 1.4em;
+}
+
+#fail {
+  display: none;
+  color: red;
+}
+
+#preview {
+  overflow: auto;
+}
+
+#preview span[i18n] {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin-bottom: 6px;
+  margin-right: 10px;
+}
+
+#thumb {
+  border: 1px solid #AAA;
+  float: left;
+  -webkit-transition: -webkit-filter 0.2s ease;
+}
+
+#text {
+  float: left;
+  width: 560px;
+  border-left: 2px solid #888;
+  margin-left: 12px;
+  padding-left: 12px;
+}
+
+#redirect, #title {
+  word-wrap: break-word;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+#redirect a {
+  color: #88D;
+  font-style: italic;
+}
+
+footer {
+  margin: 4em 0 1em 0;
+  font-size: 0.9em;
+  color: #aaa;
+  position: relative;
+  -webkit-transition: all 0.9s 0.3s ease;
+  -webkit-transform: perspective(400) rotateX(70deg);
+  top: 100px;
+  opacity: 0;
+}
+
+footer.show {
+  top: 0;
+  opacity: 1;
+  -webkit-transform: perspective(400);
+}
+
+footer a {
+  color: #777;
+}
