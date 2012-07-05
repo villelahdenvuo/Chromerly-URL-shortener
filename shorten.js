@@ -15,16 +15,17 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 function shortenURL(url, cb) {
-  var xhr = new XMLHttpRequest(),
-      urly = 'http://urly.fi/api/shorten/?url=' + escape(url);
+  var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
-    if (xhr.readyState != 4) {return;}
-    if        (xhr.status == 200) {cb(false, xhr.responseText, url);
-    } else if (xhr.status == 403) {cb(true, 'FailFormat');
-    } else if (xhr.status == 409) {cb(true, 'FailLimit');
-    } else                        {cb(true, 'FailGeneral');}
-  }
-  xhr.open('GET', urly, true);
+    if (xhr.readyState != 4) { return; }
+    switch(xhr.status) {
+      case 200: cb(false, xhr.responseText, url); break;
+      case 403: cb(true, 'FailFormat'); break;
+      case 409: cb(true, 'FailLimit'); break;
+       default: cb(true, 'FailGeneral');
+    }
+  };
+  xhr.open('GET', localStorage.baseURL + 'api/shorten/?url=' + escape(url));
   xhr.send();
 }
 
@@ -36,12 +37,13 @@ function copyToClipboard(text) {
 }
 
 function createNotification (code, original) {
-  localStorage['original'] = original;
-  localStorage['code'] = code;
-  var notification = webkitNotifications.createHTMLNotification('note.html');
+  var global = localStorage;
+  global.original = original;
+  global.code = code;
+  var notification = webkitNotifications.createHTMLNotification('note/note.html');
 
-  if (localStorage['hasTimeout'] === 'true') {
-    var timeout = parseInt(localStorage['timeout']);
+  if (global.hasTimeout === 'true') {
+    var timeout = parseInt(global.timeout, 10);
     if (!timeout) { return; }
     setTimeout(function () { notification.cancel(); }, timeout * 1000);
   }
@@ -51,8 +53,7 @@ function createNotification (code, original) {
 function createErrorNotification(msg, tab) {
   setIcon('stop', 'UrlyFailed', tab);
   var notification = webkitNotifications.createNotification('graphics/stop.png',
-                                           chrome.i18n.getMessage('UrlyFailed'),
-                                           chrome.i18n.getMessage(msg));
+                      chrome.i18n.getMessage('UrlyFailed'), chrome.i18n.getMessage(msg));
   setTimeout(function () {
     setIcon('16', 'UrlyShorten', tab);
     notification.cancel();
@@ -64,4 +65,4 @@ function setIcon(i, t, tab) {
   if (!tab) { return; }
   chrome.pageAction.setIcon({path: 'graphics/' + i + '.png', tabId: tab.id});
   chrome.pageAction.setTitle({title: chrome.i18n.getMessage(t), tabId: tab.id});
-};
+}

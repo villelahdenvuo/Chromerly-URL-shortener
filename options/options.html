@@ -20,33 +20,36 @@
   <head>
     <meta charset="utf-8" />
     <title i18n="ExtensionName"></title>
-    <link rel="stylesheet" href="info.css" />
-    <script src="libs/jquery-1.7.2.min.js"></script>
-    <script src="info.js"></script>
+    <link rel="stylesheet" href="options.css" />
+    <script src="/libs/jquery-1.7.2.min.js"></script>
+    <script src="options.js"></script>
   </head>
   <body>
     <header>
-      <img src="graphics/48.png" width="48" height="48" />
-      <h1><span i18n="InfoTitle"></span> <span id="code"></span></h1>
+      <img src="/graphics/48.png" width="48" height="48" />
+      <h1 i18n="OptionsTitle"></h1>
     </header>
-    <div id="loading">
-      <h2 i18n="InfoLoading">Looking up the URL...</h2>
-    </div>
-    <div id="info">
-      <div id="preview">
-        <a id="thumblink"><img id="thumb" width="200" height="150"/></a>
-        <div id="text">
-          <span i18n="InfoRedirectsTo">Redirects to</span>
-          <div id="redirect"><a href="#"></a></div>
-          <span i18n="InfoVisits">Number of visits</span> <span id="nuses"></span><br />
-          <span i18n="InfoCreated">Created</span> <span id="created"></span><br />
-          <span i18n="InfoUrlTitle" style="display:none;">Title</span>
-          <div id="title"></div>
-      </div>
-      </div>
-    </div>
-    <div id="fail">
-      <h2 i18n="InfoFail">Could not find info!</h2>
+    <div id="options">
+
+      <!-- Notification timeout -->
+      <label>
+        <input id="hasTimeout" type="checkbox" />
+        <span i18n="OptionsTimeout"></span>
+      </label> <input id="timeout" type="number" min="0" /> <span id="unit" i18n="OptionsTimeoutUnit"></span>
+      <span id="timeoutWarning" class="details" i18n="OptionsTimeoutWarning"></span><br />
+
+      <!-- Preview links -->
+      <label>
+        <input id="showInfo" type="checkbox" />
+        <span i18n="OptionsInfo"></span>
+      </label><span id="allowBlock"></span>
+      <span id="infoTip" class="details" i18n="OptionsInfoTip"></span><br /><br />
+
+      <!-- Action buttons -->
+      <button id="saveButton" i18n="OptionsSave"></button>
+      <button id="resetButton" i18n="OptionsReset"></button>
+      <span id="done" i18n="OptionsDone"></span>
+
     </div>
     <footer>
       <a href="http://urly.fi/bu" i18n="ExtensionName"></a>

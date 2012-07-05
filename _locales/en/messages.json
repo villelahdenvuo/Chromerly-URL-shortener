@@ -24,18 +24,18 @@
     "OptionsTimeoutUnit": {"description": "what unit it is",  "message": "seconds"},
  "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; You won't see <b>any</b> notification!"},
            "OptionsInfo": {"description": "Preview URLs",     "message": "Preview links"},
-        "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Instead of opening shortened links, show info pages."},
+        "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Instead of opening shortened link, show info page."},
            "OptionsSave": {"description": "Save-button",      "message": "Save"},
           "OptionsReset": {"description": "Reset-button",     "message": "Reset"},
            "OptionsDone": {"description": "Done! notice",     "message": "Done!"},
     "OptionsChromerlyBy": {"description": "Chromerly * name", "message": "by"},
         "OptionsProject": {"description": "Link to project",  "message": "the code"},
 
-        "InfoTitle": {"description": "h1 on info page",    "message": "Information for"},
-        "InfoRedirectsTo": {"description": "",    "message": "Redirects to"},
-        "InfoVisits": {"description": "",    "message": "Number of visits"},
-        "InfoCreated": {"description": "",    "message": "Created"},
-        "InfoUrlTitle": {"description": "",    "message": "Page Title"},
-        "InfoLoading": {"description": "",    "message": "Looking up the URL..."},
-        "InfoFail": {"description": "",    "message": "Could not find info!"}
+        "InfoTitle": {"description": "",    "message": "Information for"},
+  "InfoRedirectsTo": {"description": "",    "message": "Redirects to"},
+       "InfoVisits": {"description": "",    "message": "Number of visits"},
+      "InfoCreated": {"description": "",    "message": "Created"},
+     "InfoUrlTitle": {"description": "",    "message": "Page Title"},
+      "InfoLoading": {"description": "",    "message": "Looking up the URL..."},
+         "InfoFail": {"description": "",    "message": "Could not find info!"}
 }

@@ -18,16 +18,24 @@
     "ContextImage": {"description": "Context text: image",       "message": "Lyhennä kuvan osoite"},
     "ContextVideo": {"description": "Context text: html5 video", "message": "Lyhennä videon osoite"},
     "ContextAudio": {"description": "Context text: html5 audio", "message": "Lyhennä äänen osoite"},
-    
+
           "OptionsTitle": {"description": "h1 on options",    "message": "Asetukset Chromerly URL-lyhentäjälle"},
         "OptionsTimeout": {"description": "label for range",  "message": "Ilmoituksen aikakatkaisu"},
     "OptionsTimeoutUnit": {"description": "what unit it is",  "message": "sekuntia"},
  "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; Ilmoitusta ei näytetä <b>ollenkaan</b>!"},
            "OptionsInfo": {"description": "Preview URLs",     "message": "Esikatsele linkkejä"},
-        "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Linkkien avaamisen sijaan näytä tietosivu."},
+        "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Linkkien avaamisen sijaan näytä tietoja."},
            "OptionsSave": {"description": "Save-button",      "message": "Tallenna"},
           "OptionsReset": {"description": "Reset-button",     "message": "Palauta"},
            "OptionsDone": {"description": "Done! notice",     "message": "Valmis!"},
     "OptionsChromerlyBy": {"description": "Chromerly * name", "message": "by"},
-        "OptionsProject": {"description": "Link to project",  "message": "koodi"}
+        "OptionsProject": {"description": "Link to project",  "message": "koodi"},
+
+        "InfoTitle": {"description": "",    "message": "Tiedot"},
+  "InfoRedirectsTo": {"description": "",    "message": "Uudelleenohjaa"},
+       "InfoVisits": {"description": "",    "message": "Käynnit"},
+      "InfoCreated": {"description": "",    "message": "Luotu"},
+     "InfoUrlTitle": {"description": "",    "message": "Sivun otsikko"},
+      "InfoLoading": {"description": "",    "message": "Etsitään tietoja..."},
+         "InfoFail": {"description": "",    "message": "Tietoja ei löytynyt!"}
 }

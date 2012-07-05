@@ -12,37 +12,29 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 @import url(http://fonts.googleapis.com/css?family=Oswald:400,300);
 
 body {
-  font-family: sans-serif;
-  margin: 10px 0 2px 2px;
+  font-family: 'Oswald', sans-serif;
+  margin: 0 0 2px 2px;
   height: 125px;
-  background-color: #F0F0F0;
+  -webkit-user-select: none;
 }
 
-#qr {
-  float: left;
-}
+#qr { float: left; }
 
 #info {
-  font-family: 'Oswald', sans-serif;
-  height: 109px;
+  height: 100px;
   display: -webkit-box;
-  -webkit-box-orient: horizontal;
   -webkit-box-pack: center;
   -webkit-box-align: center;
   font-size: 20px;
-  background-color: #FFF;
-  border-bottom-right-radius: 1em;
 }
 
-#originalURL {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 200;
+#original {
+  font-weight: 300;
   font-size: 12px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -51,30 +43,19 @@ body {
   background-color: #F0F0F0;
   padding-left: 3px;
   color: #444;
+  -webkit-user-select: text;
 }
 
-#link:hover #code {
-  -webkit-transform: skew(-10deg);
-}
-
-#link:active, #link:visited {
-  color: blue;
-}
-
+#link:active, #link:visited { color: blue; }
 #link {
-  display: inline-block;
-  -webkit-transition: -webkit-transform 0.2s ease;
-  font-size: 20px;
+  -webkit-user-select: text;
   text-decoration: none;
 }
 
+#link:hover #code { -webkit-transform: skew(-10deg); }
 #code {
+  -webkit-transition: -webkit-transform 0.2s ease;
   display: inline-block;
   font-size: 30px;
   font-weight: bold;
-  -webkit-transition: -webkit-transform 0.2s ease;
-}
-
-#notification {
-  font-size: 20px;
 }

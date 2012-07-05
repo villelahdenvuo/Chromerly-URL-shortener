@@ -11,24 +11,19 @@ Features
 * Simple icon to click on every site to shorten it's url
 * Omnibox integration - just type urly, press tab and enter your url to shorten it
 * Sleek notification with QR-code for us smartphone owners
-* Context menu integration for images, videos, audio, links and selected text!
-* **NEW:** Block Urly links to preview where they redirect before opening them!
-* Translated to many languages, see below!
-
-Feature requests
-----------------
-* Suggest your ideas and/or fork the project!
+* Context menu integration for images, videos, audio, links and selected text
+* **NEW:** Block Urly links to preview where they redirect before opening them
+* **NEW:** Web Intents! Now any service can shorten with Chromerly. :)
 
 Contributors
------------
-* tuhoojabotti (Ville Lahdenvuo) – Main developer
-* Pettis (Juha Petäjäjärvi) – [Urly](http://urly.fi/ "In Finnish") and it's api
-* jhh (Jaakko-Heikki Heusala) – Some help
-* mikeful (Mikko Niemikorpi) – Teh awsum README logo!
-* Crystal Project (Everaldo Coelho) – Processing and failure icons
+------------
+* [tuhoojabotti](http://tuhoojabotti.com) (Ville Lahdenvuo) – Main developer
+* Pettis (Juha Petäjäjärvi) – [Urly](http://urly.fi/ "In Finnish") and its api
+* mikeful (Mikko Niemikorpi) – The awsum README logo
+* [Crystal Project](http://www.everaldo.com/crystal/) (Everaldo Coelho) – Processing and failure icons
 
 ### Translators
-* tuhoojabotti (Ville Lahdenvuo) – English & Finnish
+* [tuhoojabotti](http://tuhoojabotti.com) (Ville Lahdenvuo) – English & Finnish
 * Hidden (Denes) – Hungarian
 * Mowmow (Moritz Köhler) – German
 * Lulu Latifa Leonita – Indonesian

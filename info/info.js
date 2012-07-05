@@ -15,19 +15,16 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 $(function () {
-  // Localize for foreign users.
   localizePage();
-
   loadInfo();
 });
 
 function loadInfo() {
-  var url = localStorage['infoUrl'], code = url.split('/').splice(3);
+  var global = localStorage, url = global.infoUrl, code = url.split('/').splice(3);
 
-  // Add code to title.
   $('#code').text('/' + code);
 
-  $.get('http://urly.fi/api/info/' + code)
+  $.get(global.baseURL + 'api/info/' + code)
   .complete(function onComplete(data) {
     if (data.status === 200) {
       renderInfo(JSON.parse(data.responseText));
@@ -62,7 +59,7 @@ function renderInfo(info) {
       if (title) {
         $('[i18n="InfoUrlTitle"]').fadeIn(150);
         $('#title').hide().html(title).fadeIn(300);
-      };
+      }
     }
   });
 
@@ -72,10 +69,6 @@ function renderInfo(info) {
     $('#info').fadeIn(350);
     $('footer').addClass('show');
   });
-}
-
-function renderError() {
-
 }
 
 // Localizes page for foreign users

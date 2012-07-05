@@ -14,15 +14,15 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
-window.addEventListener('load', initialize);
+window.addEventListener('load', function initialize() {
+  var UrlyReserved = new RegExp(/info|static/), global = localStorage;
 
-function initialize() {
-  var UrlyReserved = new RegExp(/info|static/), infoTabs = [], blocking = false;
+  // Setup global settings
+  global.baseURL = 'http://urly.fi/';
 
   // Listen for tab updates (to show pageAction icon in the omnibox).
   chrome.tabs.onUpdated.addListener(function(tabId, info) {
     chrome.pageAction.show(tabId);
-    if (info.url && !info.url.indexOf('http://urly.fi/info/')) {infoTabs.push(tabId)};
   });
 
   // A simple wrapper to shorten, notify and update icon.
@@ -31,55 +31,44 @@ function initialize() {
     shortenURL(url, function (err, code, original) {
       if (err) { createErrorNotification(code, tab); return; }
       setIcon('16', 'UrlyShorten', tab);
-      copyToClipboard('http://urly.fi/' + code);
+      copyToClipboard(global.baseURL + code);
       createNotification(code, original);
     });
   }
 
-  // Show info pages instead of redirecting, if the use so desires.
+  // Show info pages instead of redirecting, if the user so desires.
   function onUrlyRequest(data) {
-    if (localStorage['showInfo'] == 'false'
-     || 'http://urly.fi/' == data.url
-     || UrlyReserved.test(data.url)) { return; }  // Don't redirect these.
-    if (infoTabs.indexOf(data.tabId) != -1) {     // Or if already on an info page.
-      infoTabs.splice(infoTabs.indexOf(data.tabId), 1); return;
-    }
-    localStorage['infoUrl'] = data.url;
-    return {redirectUrl: chrome.extension.getURL("info.html")};
-    //return {cancel: true};
+    if (global.showInfo == 'false' || global.baseURL == data.url ||
+      UrlyReserved.test(data.url)) { return; }
+
+    global.infoUrl = data.url;
+    return {redirectUrl: chrome.extension.getURL('info/info.html')};
   }
 
   function permission(has) {
-    if (has) {
-      blocking = true;
-      chrome.webRequest.onBeforeRequest.addListener(onUrlyRequest,
-        {urls: ['http://urly.fi/*'], types: ['main_frame']}, ['blocking']);
-    }
+    if (!has) { return; }
+    chrome.webRequest.onBeforeRequest.addListener(onUrlyRequest,
+      {urls: [global.baseURL + '*'], types: ['main_frame']}, ['blocking']);
   }
   chrome.permissions.contains({permissions: ['webRequest', 'webRequestBlocking']}, permission);
-
-  // Listen to other parts of the extension, maybe they have something interesting to say.
   chrome.extension.onRequest.addListener(function (req) {
-    if (req.msg == 'canBlock' && !blocking) {
-      // Got message from the options page, that we have permission! Check again.
-      chrome.permissions.contains({permissions: ["webRequest", "webRequestBlocking"]}, permission);
+    if (req.msg == 'canBlock') {
+      chrome.permissions.contains({permissions: ['webRequest', 'webRequestBlocking']}, permission);
     }
   });
 
-  ///////////////////////// USER INTERACTION /////////////////////////
-
   // Initialize context menus
-  function createMenu(name, context, source) {
+  [ ['Selection', function (i) { return i.selectionText; }],
+    ['Page',      function (i) { return i.pageUrl;       }],
+    ['Link',      function (i) { return i.linkUrl;       }],
+    ['Image',     function (i) { return i.srcUrl;        }],
+    ['Video',     function (i) { return i.srcUrl;        }],
+    ['Audio',     function (i) { return i.srcUrl;        }]
+  ].forEach(function initContext(c) {
     chrome.contextMenus.create({
-      title: chrome.i18n.getMessage(name), contexts: [context],
-      onclick: function (i, tab) { shortenWrapper(source(i), tab); }});
-  }
-  createMenu('ContextSelection', 'selection', function (i) { return i.selectionText; });
-  createMenu('ContextPage',      'page',      function (i) { return i.pageUrl; });
-  createMenu('ContextLink',      'link',      function (i) { return i.linkUrl; });
-  createMenu('ContextImage',     'image',     function (i) { return i.srcUrl; });
-  createMenu('ContextVideo',     'video',     function (i) { return i.srcUrl; });
-  createMenu('ContextAudio',     'audio',     function (i) { return i.srcUrl; });
+      title: chrome.i18n.getMessage('Context' + c[0]), contexts: [c[0].toLowerCase()],
+      onclick: function (i, tab) { shortenWrapper(c[1](i), tab); }});
+  });
 
   // Listen for pageAction icon clicks
   chrome.pageAction.onClicked.addListener(function (tab) {
@@ -90,4 +79,4 @@ function initialize() {
   chrome.omnibox.onInputEntered.addListener(function (text) {
     chrome.tabs.getCurrent(function (tab) { shortenWrapper(text, tab); });
   });
-}
+});

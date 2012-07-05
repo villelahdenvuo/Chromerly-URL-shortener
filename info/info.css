@@ -12,8 +12,7 @@
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+    along with this program.  If not, see <http://www.gnu.org/licenses/>. */
 
 body {
   width: 800px;
@@ -22,12 +21,8 @@ body {
   text-align: center;
   position: relative;
 }
-header {
-  margin: 1em 0 2em 0;
-}
-header img {
-  margin-right: 10px;
-}
+header { margin: 1em 0 2em 0; }
+header img { margin-right: 10px; }
 h1 {
   display: inline;
   font-family: sans-serif;
@@ -35,10 +30,7 @@ h1 {
   vertical-align: 0.4em;
 }
 
-h1:hover #code {
-  -webkit-transform: skew(-10deg);
-}
-
+h1:hover #code { -webkit-transform: skew(-10deg); }
 h1 #code {
   display: inline-block;
   font-size: 40px;
@@ -54,8 +46,8 @@ h1 #code {
 }
 
 #loading {
-  top: 115px;
   position: absolute;
+  top: 115px;
   width: 100%;
   font-size: 1.4em;
 }
@@ -65,9 +57,7 @@ h1 #code {
   color: red;
 }
 
-#preview {
-  overflow: auto;
-}
+#preview { overflow: auto; }
 
 #preview span[i18n] {
   display: inline-block;
@@ -80,7 +70,6 @@ h1 #code {
 #thumb {
   border: 1px solid #AAA;
   float: left;
-  -webkit-transition: -webkit-filter 0.2s ease;
 }
 
 #text {
@@ -103,22 +92,16 @@ h1 #code {
 }
 
 footer {
+  -webkit-transition: all 0.9s 0.3s ease;
   margin: 4em 0 1em 0;
   font-size: 0.9em;
   color: #aaa;
   position: relative;
-  -webkit-transition: all 0.9s 0.3s ease;
-  -webkit-transform: perspective(400) rotateX(70deg);
   top: 100px;
   opacity: 0;
 }
-
 footer.show {
   top: 0;
   opacity: 1;
-  -webkit-transform: perspective(400);
 }
-
-footer a {
-  color: #777;
-}
+footer a { color: #777; }
