@@ -44,6 +44,7 @@ body {
   padding-left: 3px;
   color: #444;
   -webkit-user-select: text;
+  max-width: 170px;
 }
 
 #link:active, #link:visited { color: blue; }
