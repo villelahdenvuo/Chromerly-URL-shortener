@@ -9,8 +9,10 @@
 "FailGeneral": {"description": "Notification text: fail",          "message": "Failed to shorten. I'm terribly sorry, try again later!"},
   "FailLimit": {"description": "Notification text: limit reached", "message": "Failed to shorten, your shortening quota is depleted!"},
  "FailFormat": {"description": "Notification text: bad format",    "message": "Failed to shorten, check your input!"},
+   "FailPush": {"description": "Notification text: fail to push",  "message": "Failed to push, sorry!"},
 
-"NoticeCopied": {"description": "Notification text: copied",   "message": "Address copied!"},
+"NoticeCopied": {"description": "Notification text: copied",  "message": "Address copied!"},
+  "NoticeOpen": {"description": "Notification text: open",    "message": "Open link"},
 
      "ContextPage": {"description": "Context text: page",        "message": "Shorten page url"},
 "ContextSelection": {"description": "Context text: selection",   "message": "Shorten selected link"},
@@ -25,6 +27,8 @@
  "OptionsTimeoutWarning": {"description": "a warning text",   "message": "&laquo; You won't see <b>any</b> notification!"},
            "OptionsInfo": {"description": "Preview URLs",     "message": "Preview links"},
         "OptionsInfoTip": {"description": "tip text",         "message": "&laquo; Instead of opening shortened link, show info page."},
+       "OptionsPushover": {"description": "Enable Pushover",  "message": "Enable Pushover"},
+       "OptionsInfoPush": {"description": "push to mobile",   "message": "&laquo; Click the QR code to push."},
            "OptionsSave": {"description": "Save-button",      "message": "Save"},
           "OptionsReset": {"description": "Reset-button",     "message": "Reset"},
            "OptionsDone": {"description": "Done! notice",     "message": "Done!"},

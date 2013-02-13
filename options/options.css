@@ -87,6 +87,26 @@ label.disabled { color: #AAA; }
   height: 22px;
 }
 
+#pushoverID {
+  width: 350px;
+}
+
+#pushoverDevice {
+  width: 200px;
+}
+
+#pushoverID, #pushoverDevice {
+  -webkit-transition: opacity 0.4s ease;
+  opacity: 0;
+  border-radius: 5px;
+  border: 1px solid #666;
+  padding: 2px;
+}
+
+#pushoverID:enabled, #pushoverDevice:enabled {
+  opacity: 1;
+}
+
 button {
   min-width: 60px;
   height: 30px;

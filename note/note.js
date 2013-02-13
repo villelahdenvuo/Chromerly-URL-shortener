@@ -28,6 +28,16 @@ window.addEventListener('load', function () {
   copied.innerText = chrome.i18n.getMessage('NoticeCopied');
   qr.src = 'http://chart.googleapis.com/chart?chs=125x125&cht=qr&chld=Q|0&chl=' + escape(url);
 
+  if (global.usePushover) {
+    qr.onclick = function (e) {
+      var bg = chrome.extension.getBackgroundPage();
+      bg.pushURL(url, function (err, msg) {
+        if (err) { bg.createErrorNotification('FailPush'); }
+      });
+    }
+  }
+
   window.oncontextmenu = function (e) { e.preventDefault(); };
   window.onclick = function () { window.close(); };
 });
+

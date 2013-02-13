@@ -19,6 +19,7 @@ window.addEventListener('load', function initialize() {
 
   // Setup global settings
   global.baseURL = 'http://urly.fi/';
+  global.pushoverToken = 'snOyjwlhaasYSf063VdR4K3GdphKxK';
 
   // Listen for tab updates (to show pageAction icon in the omnibox).
   chrome.tabs.onUpdated.addListener(function(tabId, info) {

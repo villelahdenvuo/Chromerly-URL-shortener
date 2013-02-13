@@ -18,12 +18,16 @@
 var defaults = {
   hasTimeout: false,
   timeout: 30,
-  showInfo: false
+  showInfo: false,
+  usePushover: false,
+  pushoverID: '',
+  pushoverDevice: ''
 };
 
 var canBlock = false;
 
 $(function () {
+  $('body').hide();
   // Localize for foreign users.
   localizePage();
 
@@ -92,9 +96,19 @@ function initializeForm () {
     }
   }).change();
 
+$('#usePushover').change(function () {
+    var checked = $(this).prop('checked');
+    $('#pushoverID').prop('disabled', !checked);
+    $('#pushoverDevice').prop('disabled', !checked);
+    $(this).parent().toggleClass('disabled', !checked);
+    $('#infoPush').toggleClass('show', checked);
+  }).change();
+
   // Bind the buttons
   $('#saveButton').click(saveOptions);
   $('#resetButton').click(resetOptions);
+
+  $('body').show();
 }
 
 // Restores options from localStorage
@@ -103,8 +117,14 @@ function restoreOptions() {
     .prop('checked', (localStorage['hasTimeout'] === 'true') || defaults.hasTimeout).change();
   $('#timeout').val(parseInt(localStorage['timeout'] || defaults.timeout));
   $('#timeoutRange').val(parseInt(localStorage['timeout'] || defaults.timeout));
+
   $('#showInfo')
     .prop('checked', (localStorage['showInfo'] === 'true') || defaults.showInfo).change();
+
+  $('#usePushover')
+    .prop('checked', (localStorage['usePushover'] === 'true') || defaults.usePushover).change();
+  $('#pushoverID').val(localStorage['pushoverID'] || defaults.pushoverID);
+  $('#pushoverDevice').val(localStorage['pushoverDevice'] || defaults.pushoverDevice);
 }
 
 // Saves options to localStorage.
@@ -112,6 +132,22 @@ function saveOptions() {
   localStorage['hasTimeout'] = $('#hasTimeout').prop('checked');
   localStorage['timeout'] = $('#timeout').val();
   localStorage['showInfo'] = $('#showInfo').prop('checked');
+
+  localStorage['usePushover'] = $('#usePushover').prop('checked');
+  localStorage['pushoverDevice'] = $('#pushoverDevice').val();
+
+  if (localStorage['usePushover'] === 'true') {
+    // Check that ID is set.
+    if (!$('#pushoverID').val().length) {
+      $('#pushoverID').css('border', '1px solid red');
+      localStorage['usePushover'] = defaults.usePushover;
+      localStorage['pushoverID'] = defaults.pushoverID;
+    } else {
+      $('#pushoverID').css('border', '1px solid #666');
+      localStorage['pushoverID'] = $('#pushoverID').val();
+    }
+  }
+
   showDone();
 }
 
@@ -121,7 +157,12 @@ function resetOptions() {
   $('#hasTimeout').prop('checked', defaults.hasTimeout).change();
   $('#timeout').val(defaults.timeout);
   $('#timeoutRange').val(defaults.timeout);
+
   $('#showInfo').prop('checked', defaults.showInfo).change();
+
+  $('#usePushover').prop('checked', defaults.usePushover).change();
+  $('#pushoverID').val(defaults.pushoverID);
+  $('#pushoverDevice').val(defaults.pushoverDevice);
   // Save
   saveOptions();
   showDone();

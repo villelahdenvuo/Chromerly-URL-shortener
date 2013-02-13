@@ -31,5 +31,8 @@
     "page_action": {
         "default_icon": "graphics/16.png",
         "default_title": "__MSG_UrlyShorten__"
-    }
+    },
+    "web_accessible_resources": [
+        "graphics/stop.png"
+    ]
 }

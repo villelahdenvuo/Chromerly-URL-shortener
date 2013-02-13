@@ -66,3 +66,28 @@ function setIcon(i, t, tab) {
   chrome.pageAction.setIcon({path: 'graphics/' + i + '.png', tabId: tab.id});
   chrome.pageAction.setTitle({title: chrome.i18n.getMessage(t), tabId: tab.id});
 }
+
+function pushURL(url, cb) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState != 4) { return; }
+    console.log(xhr.responseText);
+    switch(xhr.status) {
+      case 200: cb(false); break;
+      case 403: cb(true); break;
+      case 409: cb(true); break;
+       default: cb(true);
+    }
+  };
+  xhr.open('POST', 'https://api.pushover.net/1/messages.json');
+  xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+  xhr.send(
+    'token=' + localStorage['pushoverToken'] + '&' +
+    'user=' + localStorage['pushoverID'] + '&' +
+    'message=' + url + '&' +
+    'device=' + localStorage['pushoverDevice'] + '&' +
+    'title=' + chrome.i18n.getMessage('ExtensionName') + '&' +
+    'url=' + url + '&' +
+    'url_title=' + chrome.i18n.getMessage('NoticeOpen')
+  );
+}
